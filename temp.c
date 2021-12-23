@@ -1,56 +1,3 @@
-# 《算法：C语言实现(第1-4部分)》的代码
-
-
-
-## 一、版本与开发工具
-
-原书版本：第3版。
-
-开发工具：CLion。**执行C文件时，运行模式(Run)会有中文乱码问题，请使用调试模式(Debug)**
-
-***
-
-## 二、目录及文件说明
-
-目录结构示意：
-
-&emsp;&emsp;`Chapter01`：第1章
-
-&emsp;&emsp;&emsp;&emsp;`program_01_01.edited.c`：第1章的第1个示例，其中的代码是经过修改的（至少会增加注释）
-&emsp;&emsp;&emsp;&emsp;`program_01_01.original.c`：第1章的第1个示例，其中的代码是原书中的原始代码，一字未改（可能会不小心格式化了）
-
-&emsp;&emsp;`Chapter01`：第2章
-
-&emsp;&emsp;&emsp;&emsp;文件略
-
-`temp.c`文件是一个临时文件，因为不想改动原书的代码，但时常又需要自己改改做测试，就会复制到`temp.c`中，可忽略。
-
-***
-
-## 三、`*.original.c`文件与`*.edited.c`文件对比
-
-`program_01_01.original.c`是原书的代码：
-
-```c
-#include <stdio.h>
-
-#define N 10000
-
-main() {
-  int i, p, q, t, id[N];
-  for (i = 0; i < N; i++) id[i] = i;
-  while (scanf("%d %d\n", &p, &q) == 2) {
-    if (id[p] == id[q]) continue;
-    for (t = id[p], i = 0; i < N; i++)
-      if (id[i] == t) id[i] = id[q];
-    printf(" %d %d\n", p, q);
-  }
-}
-```
-
-`program_01_01.edited.c`是我修改后的代码：
-
-```c
 #include <stdio.h>
 
 /** 常量N，表示数组的大小 */
@@ -116,22 +63,3 @@ main() {
     printf("\n");
   }
 }
-```
-
-可以看到，增加了注释、打印一引导的语句、打印了方便查看的结果。
-
-***
-
-## 四、关于更新
-
-原书中文版有470页，英文版有722页，我的学习进度非常非常慢，学一点更新一点。
-
-学算法这种事你懂的，急不来的。
-
-***
-
-## 五、总体进度
-
-1. 
-
-   
