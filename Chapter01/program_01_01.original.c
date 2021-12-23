@@ -1,7 +1,5 @@
 #include <stdio.h>
-
 #define N 10000
-
 main() {
   int i, p, q, t, id[N];
   for (i = 0; i < N; i++) id[i] = i;
