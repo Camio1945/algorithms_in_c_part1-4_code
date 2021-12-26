@@ -1,4 +1,5 @@
 *.aps
+*.bin
 *.Cache
 *.class
 *.dbmdl

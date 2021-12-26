@@ -8,3 +8,9 @@ add_executable(temp temp.c)
 add_executable(program_01_01.edited Chapter01/program_01_01.edited.c)
 
 add_executable(program_01_01.original Chapter01/program_01_01.original.c)
+
+add_executable(program_01_02.original Chapter01/program_01_02.original.c)
+
+add_executable(program_01_02.edited Chapter01/program_01_02.edited.c)
+
+add_executable(program_01_02.test Chapter01/program_01_02.test.c)
