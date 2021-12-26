@@ -20,7 +20,7 @@ int get_root(int id[], int p);
  *                                此时a[1]不再是根节点，而是a[2]的子节点，a[1]和a[2]拥有相同的根节点a[2]，所以a[1]和a[2]是连通的：
  *          a[1] a[2] a[3] a[4]
  *          2    2    3    4
- *      输入`2 4`后，a[3]的值变成了4，此时a[3]不再是根节点，而是a[4]的子节点，a[3]和a[4]拥有相同的根节点a[4]，所以a[3]和a[4]是连通的：：
+ *      输入`3 4`后，a[3]的值变成了4，此时a[3]不再是根节点，而是a[4]的子节点，a[3]和a[4]拥有相同的根节点a[4]，所以a[3]和a[4]是连通的：：
  *          a[1] a[2] a[3] a[4]
  *          2    2    4    4
  *      输入`1 4`后，由于a[1]已经不是根节点了，所以要往上找到a[2]，发现a[2]是根节点，于是把a[2]挂到a[4]底下，此时4个节点的根节点都是a[4]，即互相都连通了：
@@ -32,7 +32,7 @@ int get_root(int id[], int p);
  */
 main() {
   setbuf(stdout, NULL); // 将标准输出的缓存区清零，防止printf不及时打印
-  int i, p, q, t, root_of_p, root_of_q, id[N];
+  int i, p, q, root_of_p, root_of_q, id[N];
   for (i = 0; i < N; i++) {
     id[i] = i;
   }
@@ -45,6 +45,7 @@ main() {
     }
     root_of_p = get_root(id, p);
     root_of_q = get_root(id, q);
+    // 这里注释掉的是原书的写法，用一行代码就完成了 get_root 方法的功能
 //    for(root_of_p = p; root_of_p != id[root_of_p]; root_of_p = id[root_of_p]);
 //    for(root_of_q = q; root_of_q != id[root_of_q]; root_of_q = id[root_of_q]);
     if (root_of_p == root_of_q) {
