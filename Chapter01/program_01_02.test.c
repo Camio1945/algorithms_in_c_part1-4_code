@@ -2,6 +2,9 @@
 #include <time.h>
 #include <stdlib.h>
 
+#define SMALL_SIZE_OF_PQ_ARR 12
+#define LARGE_SIZE 100000
+
 /**
  * 连通性第1版
  * @param id 原数组
@@ -73,7 +76,7 @@ int program_01_02(int *id, int size_of_id, int *pq_arr, int size_of_pq_arr, int 
       }
       continue;
     }
-    id[root_of_p] = id[root_of_q];
+    id[root_of_p] = root_of_q;
     if (is_print_result) {
       printf("\t不连通：%d %d\n", p, q);
       printf("处理之后的数组为：\t");
@@ -85,8 +88,6 @@ int program_01_02(int *id, int size_of_id, int *pq_arr, int size_of_pq_arr, int 
   }
 }
 
-#define SMALL_SIZE_OF_PQ_ARR 12
-#define LARGE_SIZE 100000
 
 /** 初始化id（数组），返回指针 */
 int *init_id(int size) {
@@ -157,7 +158,7 @@ void test_correctness() {
 void test_performance() {
   int size_of_id = LARGE_SIZE; // 节点数组的大小
   int *id = init_id(size_of_id);  // 节点数组
-  int *pq_arr = init_pq_arr(LARGE_SIZE); // // p和q的数组，用于模拟输入数据
+  int *pq_arr = init_pq_arr(LARGE_SIZE); // p和q的数组，用于模拟输入数据
 
   printf("\n\n\n------------- 性能测试 - program_01_01 开始 -------------\n");
   clock_t start = clock();

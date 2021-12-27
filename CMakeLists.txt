@@ -14,3 +14,9 @@ add_executable(program_01_02.original Chapter01/program_01_02.original.c)
 add_executable(program_01_02.edited Chapter01/program_01_02.edited.c)
 
 add_executable(program_01_02.test Chapter01/program_01_02.test.c)
+
+add_executable(program_01_03.original Chapter01/program_01_03.original.c)
+
+add_executable(program_01_03.edited Chapter01/program_01_03.edited.c)
+
+add_executable(program_01_03.test Chapter01/program_01_03.test.c)
