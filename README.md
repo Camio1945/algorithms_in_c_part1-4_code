@@ -141,4 +141,5 @@ main() {
 ### 第1章 
 
 1. 程序1.1：[博客](https://blog.csdn.net/blueskybluesoul/article/details/122115288)、[视频](https://www.bilibili.com/video/BV1hD4y1c7xQ/)
+2. 程序1.2：[博客](https://blog.csdn.net/blueskybluesoul/article/details/122164615)、[视频](https://www.bilibili.com/video/BV1Vu411D7SH)
 2. 
