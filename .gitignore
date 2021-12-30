@@ -6,6 +6,7 @@
 *.dotCover
 *.egg
 *.egg-info
+*.exe
 *.ilk
 *.iml
 *.launch

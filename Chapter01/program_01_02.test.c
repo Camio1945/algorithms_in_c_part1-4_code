@@ -6,12 +6,12 @@
 #define LARGE_SIZE 100000
 
 /**
- * è¿é€šæ€§ç¬¬1ç‰ˆ
- * @param id åŸæ•°ç»„
- * @param size_of_id  åŸæ•°ç»„çš„å¤§å°
- * @param pq_arr æ•°å€¼å¯¹æ•°ç»„ï¼ˆäºŒç»´æ•°ç»„ï¼‰
- * @param size_of_pq_arr  æ•°å€¼å¯¹çš„æ€»å¯¹æ•°ï¼Œå³äºŒç»´æ•°ç»„ç¬¬1ç»´çš„å¤§å°
- * @param is_print_result æ˜¯å¦æ‰“å°ç»“æœï¼ˆæµ‹è¯•æ­£ç¡®æ€§æ—¶ä¼ 1ï¼Œæ–¹ä¾¿åœ¨æ§åˆ¶å°æŸ¥çœ‹ç»“æœæ˜¯å¦æ­£ç¡®ï¼›æµ‹è¯•æ€§èƒ½æ—¶ä¼ 0ï¼Œå› ä¸ºæ‰“å°ç»“æœæœ¬èº«å°±å¾ˆè€—æ—¶ï¼Œå®ƒä¼šå½±å“åŸç¨‹åºçš„æ€§èƒ½ï¼‰
+ * Á¬Í¨ĞÔµÚ1°æ
+ * @param id Ô­Êı×é
+ * @param size_of_id  Ô­Êı×éµÄ´óĞ¡
+ * @param pq_arr ÊıÖµ¶ÔÊı×é£¨¶şÎ¬Êı×é£©
+ * @param size_of_pq_arr  ÊıÖµ¶ÔµÄ×Ü¶ÔÊı£¬¼´¶şÎ¬Êı×éµÚ1Î¬µÄ´óĞ¡
+ * @param is_print_result ÊÇ·ñ´òÓ¡½á¹û£¨²âÊÔÕıÈ·ĞÔÊ±´«1£¬·½±ãÔÚ¿ØÖÆÌ¨²é¿´½á¹ûÊÇ·ñÕıÈ·£»²âÊÔĞÔÄÜÊ±´«0£¬ÒòÎª´òÓ¡½á¹û±¾Éí¾ÍºÜºÄÊ±£¬Ëü»áÓ°ÏìÔ­³ÌĞòµÄĞÔÄÜ£©
  * @return
  */
 int program_01_01(int *id, int size_of_id, int *pq_arr, int size_of_pq_arr, int is_print_result) {
@@ -19,26 +19,26 @@ int program_01_01(int *id, int size_of_id, int *pq_arr, int size_of_pq_arr, int 
     int p = pq_arr[j * 2];
     int q = pq_arr[j * 2 + 1];
     if (is_print_result) {
-      printf("å¤„ç†ä¹‹å‰çš„æ•°ç»„ä¸ºï¼š\t");
+      printf("´¦ÀíÖ®Ç°µÄÊı×éÎª£º\t");
       for (int i = 0; i < size_of_id; i++) {
         printf("%d ", id[i]);
       }
     }
     if (id[p] == id[q]) {
       if (is_print_result) {
-        printf("\tè¿é€šï¼š%d %d\n", p, q);
+        printf("\tÁ¬Í¨£º%d %d\n", p, q);
       }
       continue;
     }
-    // ã€å…³é”®ä»£ç æ®µã€‘
+    // ¡¾¹Ø¼ü´úÂë¶Î¡¿
     for (int t = id[p], i = 0; i < size_of_id; i++) {
       if (id[i] == t) {
         id[i] = id[q];
       }
     }
     if (is_print_result) {
-      printf("\tä¸è¿é€šï¼š%d %d\n", p, q);
-      printf("å¤„ç†ä¹‹åçš„æ•°ç»„ä¸ºï¼š\t");
+      printf("\t²»Á¬Í¨£º%d %d\n", p, q);
+      printf("´¦ÀíÖ®ºóµÄÊı×éÎª£º\t");
       for (int i = 0; i < size_of_id; i++) {
         printf("%d ", id[i]);
       }
@@ -49,12 +49,12 @@ int program_01_01(int *id, int size_of_id, int *pq_arr, int size_of_pq_arr, int 
 
 
 /**
- * è¿é€šæ€§ç¬¬2ç‰ˆ
- * @param id åŸæ•°ç»„
- * @param size_of_id  åŸæ•°ç»„çš„å¤§å°
- * @param pq_arr æ•°å€¼å¯¹æ•°ç»„ï¼ˆäºŒç»´æ•°ç»„ï¼‰
- * @param size_of_pq_arr  æ•°å€¼å¯¹çš„æ€»å¯¹æ•°ï¼Œå³äºŒç»´æ•°ç»„ç¬¬1ç»´çš„å¤§å°
- * @param is_print_result æ˜¯å¦æ‰“å°ç»“æœï¼ˆæµ‹è¯•æ­£ç¡®æ€§æ—¶ä¼ 1ï¼Œæ–¹ä¾¿åœ¨æ§åˆ¶å°æŸ¥çœ‹ç»“æœæ˜¯å¦æ­£ç¡®ï¼›æµ‹è¯•æ€§èƒ½æ—¶ä¼ 0ï¼Œå› ä¸ºæ‰“å°ç»“æœæœ¬èº«å°±å¾ˆè€—æ—¶ï¼Œå®ƒä¼šå½±å“åŸç¨‹åºçš„æ€§èƒ½ï¼‰
+ * Á¬Í¨ĞÔµÚ2°æ
+ * @param id Ô­Êı×é
+ * @param size_of_id  Ô­Êı×éµÄ´óĞ¡
+ * @param pq_arr ÊıÖµ¶ÔÊı×é£¨¶şÎ¬Êı×é£©
+ * @param size_of_pq_arr  ÊıÖµ¶ÔµÄ×Ü¶ÔÊı£¬¼´¶şÎ¬Êı×éµÚ1Î¬µÄ´óĞ¡
+ * @param is_print_result ÊÇ·ñ´òÓ¡½á¹û£¨²âÊÔÕıÈ·ĞÔÊ±´«1£¬·½±ãÔÚ¿ØÖÆÌ¨²é¿´½á¹ûÊÇ·ñÕıÈ·£»²âÊÔĞÔÄÜÊ±´«0£¬ÒòÎª´òÓ¡½á¹û±¾Éí¾ÍºÜºÄÊ±£¬Ëü»áÓ°ÏìÔ­³ÌĞòµÄĞÔÄÜ£©
  * @return
  */
 int program_01_02(int *id, int size_of_id, int *pq_arr, int size_of_pq_arr, int is_print_result) {
@@ -62,7 +62,7 @@ int program_01_02(int *id, int size_of_id, int *pq_arr, int size_of_pq_arr, int 
     int p = pq_arr[j * 2];
     int q = pq_arr[j * 2 + 1];
     if (is_print_result) {
-      printf("å¤„ç†ä¹‹å‰çš„æ•°ç»„ä¸ºï¼š\t");
+      printf("´¦ÀíÖ®Ç°µÄÊı×éÎª£º\t");
       for (int i = 0; i < size_of_id; i++) {
         printf("%d ", id[i]);
       }
@@ -72,14 +72,14 @@ int program_01_02(int *id, int size_of_id, int *pq_arr, int size_of_pq_arr, int 
     for (root_of_q = q; root_of_q != id[root_of_q]; root_of_q = id[root_of_q]);
     if (root_of_p == root_of_q) {
       if (is_print_result) {
-        printf("\tè¿é€šï¼š%d %d\n", p, q);
+        printf("\tÁ¬Í¨£º%d %d\n", p, q);
       }
       continue;
     }
     id[root_of_p] = root_of_q;
     if (is_print_result) {
-      printf("\tä¸è¿é€šï¼š%d %d\n", p, q);
-      printf("å¤„ç†ä¹‹åçš„æ•°ç»„ä¸ºï¼š\t");
+      printf("\t²»Á¬Í¨£º%d %d\n", p, q);
+      printf("´¦ÀíÖ®ºóµÄÊı×éÎª£º\t");
       for (int i = 0; i < size_of_id; i++) {
         printf("%d ", id[i]);
       }
@@ -89,7 +89,7 @@ int program_01_02(int *id, int size_of_id, int *pq_arr, int size_of_pq_arr, int 
 }
 
 
-/** åˆå§‹åŒ–idï¼ˆæ•°ç»„ï¼‰ï¼Œè¿”å›æŒ‡é’ˆ */
+/** ³õÊ¼»¯id£¨Êı×é£©£¬·µ»ØÖ¸Õë */
 int *init_id(int size) {
   int *id = malloc(sizeof(int) * size);
   for (int i = 0; i < size; ++i) {
@@ -98,7 +98,7 @@ int *init_id(int size) {
   return id;
 }
 
-/** æ ¹æ®ç²¾ç¡®çš„æ•°æ®æ¥åˆå§‹åŒ–pq_arr */
+/** ¸ù¾İ¾«È·µÄÊı¾İÀ´³õÊ¼»¯pq_arr */
 void init_pq_arr_by_precise_data(int *pq_arr) {
   int precise_arr[SMALL_SIZE_OF_PQ_ARR][2] = {
       {3, 4},
@@ -120,10 +120,10 @@ void init_pq_arr_by_precise_data(int *pq_arr) {
   }
 }
 
-/** åˆå§‹åŒ–æ•°æ®å¯¹æ•°ç»„ */
+/** ³õÊ¼»¯Êı¾İ¶ÔÊı×é */
 int *init_pq_arr(size) {
   int *pq_arr = malloc(sizeof(int) * size * 2);
-  // å¦‚æœæ•°æ®å¯¹çš„å¤§å°æ˜¯è¾ƒå°çš„é‚£ä¸ªå€¼ï¼ˆæˆ‘ä»¬å·²ç»çº¦å®šæ˜¯ç”¨äºæµ‹è¯•æ­£ç¡®æ€§çš„ï¼‰ï¼Œåˆ™æŠŠåŸä¹¦ä¸Šå‡†å¤‡å¥½çš„æ•°æ®å¯¹è¿”å›å›å»
+  // Èç¹ûÊı¾İ¶ÔµÄ´óĞ¡ÊÇ½ÏĞ¡µÄÄÇ¸öÖµ£¨ÎÒÃÇÒÑ¾­Ô¼¶¨ÊÇÓÃÓÚ²âÊÔÕıÈ·ĞÔµÄ£©£¬Ôò°ÑÔ­ÊéÉÏ×¼±¸ºÃµÄÊı¾İ¶Ô·µ»Ø»ØÈ¥
   if (size == SMALL_SIZE_OF_PQ_ARR) {
     init_pq_arr_by_precise_data(pq_arr);
   } else {
@@ -136,51 +136,51 @@ int *init_pq_arr(size) {
 }
 
 /**
- * æµ‹è¯•æ­£ç¡®æ€§
- * è¯´æ˜ï¼šæœ¬ç¨‹åºæ— æ³•ç›´æ¥æµ‹è¯•æ­£ç¡®æ€§ï¼Œéœ€è¦äººå·¥å¯¹æ¯”æ‰“å°ç»“æœ
+ * ²âÊÔÕıÈ·ĞÔ
+ * ËµÃ÷£º±¾³ÌĞòÎŞ·¨Ö±½Ó²âÊÔÕıÈ·ĞÔ£¬ĞèÒªÈË¹¤¶Ô±È´òÓ¡½á¹û
  */
 void test_correctness() {
-  int size_of_id = 10; // èŠ‚ç‚¹æ•°ç»„çš„å¤§å°
-  int *id = init_id(size_of_id);  // èŠ‚ç‚¹æ•°ç»„
-  int *pq_arr = init_pq_arr(SMALL_SIZE_OF_PQ_ARR); // på’Œqçš„æ•°ç»„ï¼Œç”¨äºæ¨¡æ‹Ÿè¾“å…¥æ•°æ®
+  int size_of_id = 10; // ½ÚµãÊı×éµÄ´óĞ¡
+  int *id = init_id(size_of_id);  // ½ÚµãÊı×é
+  int *pq_arr = init_pq_arr(SMALL_SIZE_OF_PQ_ARR); // pºÍqµÄÊı×é£¬ÓÃÓÚÄ£ÄâÊäÈëÊı¾İ
 
-  printf("------------- æ­£ç¡®æ€§æµ‹è¯• - program_01_01 å¼€å§‹ -------------\n");
+  printf("------------- ÕıÈ·ĞÔ²âÊÔ - program_01_01 ¿ªÊ¼ -------------\n");
   program_01_01(id, size_of_id, pq_arr, SMALL_SIZE_OF_PQ_ARR, 1);
-  printf("------------- æ­£ç¡®æ€§æµ‹è¯• - program_01_01 ç»“æŸ -------------\n\n\n");
+  printf("------------- ÕıÈ·ĞÔ²âÊÔ - program_01_01 ½áÊø -------------\n\n\n");
 
   id = init_id(size_of_id);
-  printf("------------- æ­£ç¡®æ€§æµ‹è¯• - program_01_02 å¼€å§‹ -------------\n");
+  printf("------------- ÕıÈ·ĞÔ²âÊÔ - program_01_02 ¿ªÊ¼ -------------\n");
   program_01_02(id, size_of_id, pq_arr, SMALL_SIZE_OF_PQ_ARR, 1);
-  printf("------------- æ­£ç¡®æ€§æµ‹è¯• - program_01_02 ç»“æŸ -------------\n");
+  printf("------------- ÕıÈ·ĞÔ²âÊÔ - program_01_02 ½áÊø -------------\n");
 }
 
-/** æµ‹è¯•æ€§èƒ½ */
+/** ²âÊÔĞÔÄÜ */
 void test_performance() {
-  int size_of_id = LARGE_SIZE; // èŠ‚ç‚¹æ•°ç»„çš„å¤§å°
-  int *id = init_id(size_of_id);  // èŠ‚ç‚¹æ•°ç»„
-  int *pq_arr = init_pq_arr(LARGE_SIZE); // på’Œqçš„æ•°ç»„ï¼Œç”¨äºæ¨¡æ‹Ÿè¾“å…¥æ•°æ®
+  int size_of_id = LARGE_SIZE; // ½ÚµãÊı×éµÄ´óĞ¡
+  int *id = init_id(size_of_id);  // ½ÚµãÊı×é
+  int *pq_arr = init_pq_arr(LARGE_SIZE); // pºÍqµÄÊı×é£¬ÓÃÓÚÄ£ÄâÊäÈëÊı¾İ
 
-  printf("\n\n\n------------- æ€§èƒ½æµ‹è¯• - program_01_01 å¼€å§‹ -------------\n");
+  printf("\n\n\n------------- ĞÔÄÜ²âÊÔ - program_01_01 ¿ªÊ¼ -------------\n");
   clock_t start = clock();
   program_01_01(id, size_of_id, pq_arr, LARGE_SIZE, 0);
   clock_t end = clock();
 
-  printf("program_01_01ç¨‹åºè€—æ—¶æ¯«ç§’ï¼š%lf\n", (double) (end - start));
-  printf("------------- æ€§èƒ½æµ‹è¯• - program_01_01 ç»“æŸ -------------\n\n\n");
+  printf("program_01_01³ÌĞòºÄÊ±ºÁÃë£º%lf\n", (double) (end - start));
+  printf("------------- ĞÔÄÜ²âÊÔ - program_01_01 ½áÊø -------------\n\n\n");
 
   id = init_id(size_of_id);
-  printf("------------- æ€§èƒ½æµ‹è¯• - program_01_02 å¼€å§‹ -------------\n");
+  printf("------------- ĞÔÄÜ²âÊÔ - program_01_02 ¿ªÊ¼ -------------\n");
   start = clock();
   program_01_02(id, size_of_id, pq_arr, LARGE_SIZE, 0);
   end = clock();
-  printf("program_01_02ç¨‹åºè€—æ—¶æ¯«ç§’ï¼š%lf\n", (double) (end - start));
-  printf("------------- æ€§èƒ½æµ‹è¯• - program_01_02 ç»“æŸ -------------\n");
+  printf("program_01_02³ÌĞòºÄÊ±ºÁÃë£º%lf\n", (double) (end - start));
+  printf("------------- ĞÔÄÜ²âÊÔ - program_01_02 ½áÊø -------------\n");
 }
 
 int main() {
-  setbuf(stdout, NULL); // å°†æ ‡å‡†è¾“å‡ºçš„ç¼“å­˜åŒºæ¸…é›¶ï¼Œé˜²æ­¢printfä¸åŠæ—¶æ‰“å°
-  test_correctness(); // æµ‹è¯•æ­£ç¡®æ€§
-  test_performance(); // æµ‹è¯•æ€§èƒ½
+  setbuf(stdout, NULL); // ½«±ê×¼Êä³öµÄ»º´æÇøÇåÁã£¬·ÀÖ¹printf²»¼°Ê±´òÓ¡
+  test_correctness(); // ²âÊÔÕıÈ·ĞÔ
+  test_performance(); // ²âÊÔĞÔÄÜ
   return 0;
 }
 
