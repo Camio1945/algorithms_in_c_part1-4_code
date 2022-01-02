@@ -20,3 +20,11 @@ add_executable(program_01_03.original Chapter01/program_01_03.original.c)
 add_executable(program_01_03.edited Chapter01/program_01_03.edited.c)
 
 add_executable(program_01_03.test Chapter01/program_01_03.test.c)
+
+add_executable(program_01_04.test Chapter01/program_01_04.test1.c)
+
+add_executable(program_01_04.edited Chapter01/program_01_04.edited.c)
+
+add_executable(program_01_04.test1 Chapter01/program_01_04.test1.c)
+
+add_executable(program_01_04.test2 Chapter01/program_01_04.test2.c)

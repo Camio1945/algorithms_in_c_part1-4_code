@@ -62,6 +62,7 @@
 .project
 .settings/
 .tox
+.vs
 .vscode
 [Bb]in
 [Dd]ebug/

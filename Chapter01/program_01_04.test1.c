@@ -3,47 +3,7 @@
 #include <stdlib.h>
 
 #define SMALL_SIZE_OF_PQ_ARR 12
-#define LARGE_SIZE 100000
-
-/**
- * 连通性第2版
- * @param id 原数组
- * @param size_of_id  原数组的大小
- * @param pq_arr 数值对数组（二维数组）
- * @param size_of_pq_arr  数值对的总对数，即二维数组第1维的大小
- * @param is_print_result 是否打印结果（测试正确性时传1，方便在控制台查看结果是否正确；测试性能时传0，因为打印结果本身就很耗时，它会影响原程序的性能）
- * @return
- */
-int program_01_02(int *id, int size_of_id, int *pq_arr, int size_of_pq_arr, int is_print_result) {
-  for (int j = 0; j < size_of_pq_arr; j++) {
-    int p = pq_arr[j * 2];
-    int q = pq_arr[j * 2 + 1];
-    if (is_print_result) {
-      printf("处理之前的数组为：\t");
-      for (int i = 0; i < size_of_id; i++) {
-        printf("%d ", id[i]);
-      }
-    }
-    int root_of_p, root_of_q;
-    for (root_of_p = p; root_of_p != id[root_of_p]; root_of_p = id[root_of_p]);
-    for (root_of_q = q; root_of_q != id[root_of_q]; root_of_q = id[root_of_q]);
-    if (root_of_p == root_of_q) {
-      if (is_print_result) {
-        printf("\t连通：%d %d\n", p, q);
-      }
-      continue;
-    }
-    id[root_of_p] = root_of_q;
-    if (is_print_result) {
-      printf("\t不连通：%d %d\n", p, q);
-      printf("处理之后的数组为：\t");
-      for (int i = 0; i < size_of_id; i++) {
-        printf("%d ", id[i]);
-      }
-      printf("\n");
-    }
-  }
-}
+#define LARGE_SIZE 10000000
 
 /**
  * 连通性第3版
@@ -68,6 +28,57 @@ int program_01_03(int *id, int size_of_id, int *pq_arr, int size_of_pq_arr, int 
     int root_of_p, root_of_q;
     for (root_of_p = p; root_of_p != id[root_of_p]; root_of_p = id[root_of_p]);
     for (root_of_q = q; root_of_q != id[root_of_q]; root_of_q = id[root_of_q]);
+    if (root_of_p == root_of_q) {
+      if (is_print_result) {
+        printf("\t连通：%d %d\n", p, q);
+      }
+      continue;
+    }
+    if (depth_arr[root_of_p] < depth_arr[root_of_q]) {
+      id[root_of_p] = root_of_q;
+      depth_arr[root_of_q] += depth_arr[root_of_p];
+    } else {
+      id[root_of_q] = root_of_p;
+      depth_arr[root_of_p] += depth_arr[root_of_q];
+    }
+    if (is_print_result) {
+      printf("\t不连通：%d %d\n", p, q);
+      printf("处理之后的数组为：\t");
+      for (int i = 0; i < size_of_id; i++) {
+        printf("%d ", id[i]);
+      }
+      printf("\n");
+    }
+  }
+}
+
+/**
+ * 连通性第4版
+ * @param id 原数组
+ * @param size_of_id  原数组的大小
+ * @param pq_arr 数值对数组（二维数组）
+ * @param size_of_pq_arr  数值对的总对数，即二维数组第1维的大小
+ * @param depth_arr  节点的深度数组
+ * @param is_print_result 是否打印结果（测试正确性时传1，方便在控制台查看结果是否正确；测试性能时传0，因为打印结果本身就很耗时，它会影响原程序的性能）
+ * @return
+ */
+int program_01_04(int *id, int size_of_id, int *pq_arr, int size_of_pq_arr, int *depth_arr, int is_print_result) {
+  for (int j = 0; j < size_of_pq_arr; j++) {
+    int p = pq_arr[j * 2];
+    int q = pq_arr[j * 2 + 1];
+    if (is_print_result) {
+      printf("处理之前的数组为：\t");
+      for (int i = 0; i < size_of_id; i++) {
+        printf("%d ", id[i]);
+      }
+    }
+    int root_of_p, root_of_q;
+    for (root_of_p = p; root_of_p != id[root_of_p]; root_of_p = id[root_of_p]) {
+      id[root_of_p] = id[id[root_of_p]];
+    }
+    for (root_of_q = q; root_of_q != id[root_of_q]; root_of_q = id[root_of_q]) {
+      id[root_of_q] = id[id[root_of_q]];
+    }
     if (root_of_p == root_of_q) {
       if (is_print_result) {
         printf("\t连通：%d %d\n", p, q);
@@ -157,17 +168,18 @@ void test_correctness() {
   int size_of_id = 10; // 节点数组的大小
   int *id = init_id(size_of_id);  // 节点数组
   int *pq_arr = init_pq_arr(SMALL_SIZE_OF_PQ_ARR); // p和q的数组，用于模拟输入数据
-
-  printf("------------- 正确性测试 - program_01_02 开始 -------------\n");
-  program_01_02(id, size_of_id, pq_arr, SMALL_SIZE_OF_PQ_ARR, 1);
-  printf("------------- 正确性测试 - program_01_02 结束 -------------\n\n\n");
-
+  int *dept_arr = init_depth_arr(size_of_id);
 
   printf("------------- 正确性测试 - program_01_03 开始 -------------\n");
-  id = init_id(size_of_id);
-  int *dept_arr = init_depth_arr(size_of_id);
   program_01_03(id, size_of_id, pq_arr, SMALL_SIZE_OF_PQ_ARR, dept_arr, 1);
-  printf("------------- 正确性测试 - program_01_03 结束 -------------\n");
+  printf("------------- 正确性测试 - program_01_03 结束 -------------\n\n\n");
+
+
+  printf("------------- 正确性测试 - program_01_04 开始 -------------\n");
+  id = init_id(size_of_id);
+  dept_arr = init_depth_arr(size_of_id);
+  program_01_04(id, size_of_id, pq_arr, SMALL_SIZE_OF_PQ_ARR, dept_arr, 1);
+  printf("------------- 正确性测试 - program_01_04 结束 -------------\n");
 }
 
 /** 测试性能 */
@@ -176,22 +188,23 @@ void test_performance() {
   int *id = init_id(size_of_id);  // 节点数组
   int *pq_arr = init_pq_arr(LARGE_SIZE); // p和q的数组，用于模拟输入数据
 
-  printf("\n\n\n------------- 性能测试 - program_01_02 开始 -------------\n");
-  clock_t start = clock();
-  program_01_02(id, size_of_id, pq_arr, LARGE_SIZE, 0);
-  clock_t end = clock();
-  printf("program_01_02程序耗时毫秒：%lf\n", (double) (end - start));
-  printf("------------- 性能测试 - program_01_02 结束 -------------\n");
-
   printf("\n\n\n------------- 性能测试 - program_01_03 开始 -------------\n");
-  id = init_id(size_of_id);
   int *depth_arr = init_depth_arr(LARGE_SIZE);
-  start = clock();
+  clock_t start = clock();
   program_01_03(id, size_of_id, pq_arr, LARGE_SIZE, depth_arr, 0);
+  clock_t end = clock();
+  printf("program_01_03程序耗时毫秒：%lf\n", (double) (end - start));
+  printf("------------- 性能测试 - program_01_03 结束 -------------\n");
+
+  printf("\n\n\n------------- 性能测试 - program_01_04 开始 -------------\n");
+  id = init_id(size_of_id);
+  depth_arr = init_depth_arr(LARGE_SIZE);
+  start = clock();
+  program_01_04(id, size_of_id, pq_arr, LARGE_SIZE, depth_arr, 0);
   end = clock();
 
-  printf("program_01_03程序耗时毫秒：%lf\n", (double) (end - start));
-  printf("------------- 性能测试 - program_01_03 结束 -------------\n\n\n");
+  printf("program_01_04程序耗时毫秒：%lf\n", (double) (end - start));
+  printf("------------- 性能测试 - program_01_04 结束 -------------\n\n\n");
 }
 
 int main() {

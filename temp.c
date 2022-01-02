@@ -1,186 +1,62 @@
 #include <stdio.h>
-#include <time.h>
-#include <stdlib.h>
+
+/** å¸¸é‡Nï¼Œè¡¨ç¤ºæ•°ç»„çš„å¤§å° */
+#define N 10
 
 /**
- * Á¬Í¨ÐÔµÚ1°æ
- * @param id Ô­Êý×é
- * @param size_of_id  Ô­Êý×éµÄ´óÐ¡
- * @param pq_arr ÊýÖµ¶ÔÊý×é£¨¶þÎ¬Êý×é£©
- * @param size_of_pq_arr  ÊýÖµ¶ÔµÄ×Ü¶ÔÊý£¬¼´¶þÎ¬Êý×éµÚ1Î¬µÄ´óÐ¡
- * @param is_print_result ÊÇ·ñ´òÓ¡½á¹û£¨²âÊÔÕýÈ·ÐÔÊ±´«1£¬·½±ãÔÚ¿ØÖÆÌ¨²é¿´½á¹ûÊÇ·ñÕýÈ·£»²âÊÔÐÔÄÜÊ±´«0£¬ÒòÎª´òÓ¡½á¹û±¾Éí¾ÍºÜºÄÊ±£¬Ëü»áÓ°ÏìÔ­³ÌÐòµÄÐÔÄÜ£©
+ * è¿žé€šé—®é¢˜ï¼ˆæ”¹è¿›ç‰ˆ2ï¼‰ï¼š
+ * <pre>
+ *   æœ¬ç¨‹åºæ˜¯ program_01_02.edited.c ç¨‹åºçš„æ”¹è¿›ç‰ˆï¼Œç›¸å…³æ³¨é‡Šä¸å†é‡å¤ã€‚
+ *   åœ¨ä¸Šä¸€ç‰ˆçš„ç¨‹åºä¸­ï¼Œç¨‹åºå¯åˆ†ä¸ºä¸ªåŠŸèƒ½ï¼Œä¸€ä¸ªæ˜¯æŸ¥æ‰¾ï¼Œä¸€ä¸ªæ˜¯åˆå¹¶ï¼ŒæŸ¥æ‰¾çš„æ•ˆçŽ‡å¾ˆé«˜ï¼Œä½†æ˜¯åˆå¹¶çš„æ•ˆçŽ‡å¾ˆä½Žï¼Œæ¯æ¬¡åˆå¹¶éƒ½è¦éåŽ†æ•°ç»„ä¸­æ‰€æœ‰çš„èŠ‚ç‚¹ã€‚
+ *   åœ¨è¿™ä¸€ç‰ˆæœ¬ä¸­ï¼Œå¼•å…¥äº†æ ‘åž‹ç»“æž„ï¼š
+ *      å‡è®¾æœ‰ä¸€ä¸ªä¸€ç»´æ•°ç»„aï¼Œå¤§å°ä¸º10ï¼Œa[0]åˆ°a[9]ä¸­å­˜çš„å€¼åˆ†åˆ«ä¸º0~9ï¼Œå³æ¯ä¸ªå…ƒç´ çš„å€¼éƒ½ä¸ä¸€æ ·ï¼Œæ¯ä¸ªèŠ‚ç‚¹éƒ½æ˜¯æ ¹èŠ‚ç‚¹ã€‚
+ *      ç¨‹åºè®¤ä¸ºï¼Œå½“a[i]å’Œa[j]çš„æ ¹èŠ‚ç‚¹ä¸ä¸€æ ·æ—¶ï¼Œiå’Œjä¸è¿žé€šï¼Œæ ¹èŠ‚ç‚¹ä¸€æ ·æ—¶ï¼Œiå’Œjè¿žé€šã€‚
+ *      ä»¥a[1]åˆ°a[2]ä¸ºä¾‹ï¼Œç¨‹åºåˆå§‹å€¼å¦‚ä¸‹ï¼š
+ *          a[1] a[2] a[3]
+ *          1    2    3
+ *      è¾“å…¥`1 2`åŽï¼Œa[2]çš„å€¼æ”¹æˆäº†1ï¼Œæ³¨æ„è¿™é‡Œçš„1æŒ‡çš„æ˜¯ä¸‹æ ‡ä¸º1ï¼Œæ ¹æ®a[1]é‡Œé¢çš„å€¼æ‰¾åˆ°å¯¹åº”ä¸‹æ ‡ä¸­çš„å€¼ï¼Œ
+ *                                æ­¤æ—¶a[2]ä¸å†æ˜¯æ ¹èŠ‚ç‚¹ï¼Œè€Œæ˜¯a[1]çš„å­èŠ‚ç‚¹ï¼Œa[1]å’Œa[2]æ‹¥æœ‰ç›¸åŒçš„æ ¹èŠ‚ç‚¹a[1]ï¼Œæ‰€ä»¥a[1]å’Œa[2]æ˜¯è¿žé€šçš„ï¼š
+ *          a[1] a[2] a[3]
+ *          1    1    3
+ *      è¾“å…¥`2 3`åŽï¼Œa[3]çš„å€¼å˜æˆäº†1ï¼Œæ­¤æ—¶a[3]ä¸å†æ˜¯æ ¹èŠ‚ç‚¹ï¼Œè€Œæ˜¯a[1]çš„å­èŠ‚ç‚¹ï¼Œæ­¤æ—¶3ä¸ªèŠ‚ç‚¹éƒ½è¿žé€šäº†ï¼Œa[2]å’Œa[3]éƒ½æ˜¯a[1]çš„å­èŠ‚ç‚¹ï¼š
+ *          a[1] a[2] a[3]
+ *          1    1    1
+ * </pre>
+ *
  * @return
  */
-int program_01_01(int *id, int size_of_id, int *pq_arr, int size_of_pq_arr, int is_print_result) {
-  for (int j = 0; j < size_of_pq_arr; j++) {
-    int p = pq_arr[j * 2];
-    int q = pq_arr[j * 2 + 1];
-    if (is_print_result) {
-      printf("´¦ÀíÖ®Ç°µÄÊý×éÎª£º\t");
-      for (int i = 0; i < size_of_id; i++) {
-        printf("%d ", id[i]);
-      }
-    }
-    if (id[p] == id[q]) {
-      if (is_print_result) {
-        printf("\tÁ¬Í¨£º%d %d\n", p, q);
-      }
-      continue;
-    }
-    // ¡¾¹Ø¼ü´úÂë¶Î¡¿
-    for (int t = id[p], i = 0; i < size_of_id; i++) {
-      if (id[i] == t) {
-        id[i] = id[q];
-      }
-    }
-    if (is_print_result) {
-      printf("\t²»Á¬Í¨£º%d %d\n", p, q);
-      printf("´¦ÀíÖ®ºóµÄÊý×éÎª£º\t");
-      for (int i = 0; i < size_of_id; i++) {
-        printf("%d ", id[i]);
-      }
-      printf("\n");
-    }
+main() {
+  setbuf(stdout, NULL); // å°†æ ‡å‡†è¾“å‡ºçš„ç¼“å­˜åŒºæ¸…é›¶ï¼Œé˜²æ­¢printfä¸åŠæ—¶æ‰“å°
+  int i, p, q, root_of_p, root_of_q, id[N], depth_arr[N];
+  for (i = 0; i < N; i++) {
+    id[i] = i;
+    depth_arr[i] = 1;
   }
-}
-
-
-/**
- * Á¬Í¨ÐÔµÚ2°æ
- * @param id Ô­Êý×é
- * @param size_of_id  Ô­Êý×éµÄ´óÐ¡
- * @param pq_arr ÊýÖµ¶ÔÊý×é£¨¶þÎ¬Êý×é£©
- * @param size_of_pq_arr  ÊýÖµ¶ÔµÄ×Ü¶ÔÊý£¬¼´¶þÎ¬Êý×éµÚ1Î¬µÄ´óÐ¡
- * @param is_print_result ÊÇ·ñ´òÓ¡½á¹û£¨²âÊÔÕýÈ·ÐÔÊ±´«1£¬·½±ãÔÚ¿ØÖÆÌ¨²é¿´½á¹ûÊÇ·ñÕýÈ·£»²âÊÔÐÔÄÜÊ±´«0£¬ÒòÎª´òÓ¡½á¹û±¾Éí¾ÍºÜºÄÊ±£¬Ëü»áÓ°ÏìÔ­³ÌÐòµÄÐÔÄÜ£©
- * @return
- */
-int program_01_02(int *id, int size_of_id, int *pq_arr, int size_of_pq_arr, int is_print_result) {
-  for (int j = 0; j < size_of_pq_arr; j++) {
-    int p = pq_arr[j * 2];
-    int q = pq_arr[j * 2 + 1];
-    if (is_print_result) {
-      printf("´¦ÀíÖ®Ç°µÄÊý×éÎª£º\t");
-      for (int i = 0; i < size_of_id; i++) {
-        printf("%d ", id[i]);
-      }
+  printf("è¯·è¾“å…¥ä¸€å¯¹æ•°å­—ï¼ˆ10ä»¥å†…ï¼‰ï¼Œä¸¤ä¸ªæ•°å­—ä¸­é—´ä»¥ç©ºæ ¼åˆ†éš”ï¼š\n");
+  while (scanf("%d %d", &p, &q) == 2) {
+    printf("å¤„ç†ä¹‹å‰çš„æ•°ç»„ä¸ºï¼š\t");
+    for (i = 0; i < N; i++) {
+      printf("%d ", id[i]);
     }
-    int root_of_p, root_of_q;
     for (root_of_p = p; root_of_p != id[root_of_p]; root_of_p = id[root_of_p]);
     for (root_of_q = q; root_of_q != id[root_of_q]; root_of_q = id[root_of_q]);
     if (root_of_p == root_of_q) {
-      if (is_print_result) {
-        printf("\tÁ¬Í¨£º%d %d\n", p, q);
-      }
+      printf("\tè¿žé€šï¼š%d %d\n", p, q);
       continue;
     }
-    id[root_of_p] = id[root_of_q];
-    if (is_print_result) {
-      printf("\t²»Á¬Í¨£º%d %d\n", p, q);
-      printf("´¦ÀíÖ®ºóµÄÊý×éÎª£º\t");
-      for (int i = 0; i < size_of_id; i++) {
-        printf("%d ", id[i]);
-      }
-      printf("\n");
+    if (depth_arr[root_of_p] < depth_arr[root_of_q]) {
+      id[root_of_p] = root_of_q;
+      depth_arr[root_of_q] += depth_arr[root_of_p];
+    } else {
+      id[root_of_q] = root_of_p;
+      depth_arr[root_of_p] += depth_arr[root_of_q];
     }
-  }
-}
-
-#define SMALL_SIZE_OF_PQ_ARR 12
-#define LARGE_SIZE 10000
-
-/** ³õÊ¼»¯id£¨Êý×é£©£¬·µ»ØÖ¸Õë */
-int *init_id(int size) {
-  int *id = malloc(sizeof(int) * size);
-  for (int i = 0; i < size; ++i) {
-    id[i] = i;
-  }
-  return id;
-}
-
-/** ¸ù¾Ý¾«È·µÄÊý¾ÝÀ´³õÊ¼»¯pq_arr */
-void init_pq_arr_by_precise_data(int *pq_arr) {
-  int precise_arr[SMALL_SIZE_OF_PQ_ARR][2] = {
-      {3, 4},
-      {4, 9},
-      {8, 0},
-      {2, 3},
-      {5, 6},
-      {2, 9},
-      {5, 9},
-      {7, 3},
-      {4, 8},
-      {5, 6},
-      {0, 2},
-      {6, 1}
-  };
-  for (int i = 0; i < SMALL_SIZE_OF_PQ_ARR; i++) {
-    pq_arr[i * 2] = precise_arr[i][0];
-    pq_arr[i * 2 + 1] = precise_arr[i][1];
-  }
-}
-
-/** ³õÊ¼»¯Êý¾Ý¶ÔÊý×é */
-int *init_pq_arr(size) {
-  int *pq_arr = malloc(sizeof(int) * size * 2);
-  // Èç¹ûÊý¾Ý¶ÔµÄ´óÐ¡ÊÇ½ÏÐ¡µÄÄÇ¸öÖµ£¨ÎÒÃÇÒÑ¾­Ô¼¶¨ÊÇÓÃÓÚ²âÊÔÕýÈ·ÐÔµÄ£©£¬Ôò°ÑÔ­ÊéÉÏ×¼±¸ºÃµÄÊý¾Ý¶Ô·µ»Ø»ØÈ¥
-  if (size == SMALL_SIZE_OF_PQ_ARR) {
-    init_pq_arr_by_precise_data(pq_arr);
-  } else {
-    for (int i = 0; i <= size - 2; i += 2) {
-      pq_arr[i] = rand() % size;
-      pq_arr[i + 1] = rand() % size;
+    printf("\tä¸è¿žé€šï¼š%d %d\n", p, q);
+    printf("å¤„ç†ä¹‹åŽçš„æ•°ç»„ä¸ºï¼š\t");
+    for (i = 0; i < N; i++) {
+      printf("%d ", id[i]);
     }
+    printf("\n");
   }
-  return pq_arr;
-}
-
-/**
- * ²âÊÔÕýÈ·ÐÔ
- * ËµÃ÷£º±¾³ÌÐòÎÞ·¨Ö±½Ó²âÊÔÕýÈ·ÐÔ£¬ÐèÒªÈË¹¤¶Ô±È´òÓ¡½á¹û
- */
-void test_correctness() {
-  int size_of_id = 10; // ½ÚµãÊý×éµÄ´óÐ¡
-  int *id = init_id(size_of_id);  // ½ÚµãÊý×é
-  int *pq_arr = init_pq_arr(SMALL_SIZE_OF_PQ_ARR); // pºÍqµÄÊý×é£¬ÓÃÓÚÄ£ÄâÊäÈëÊý¾Ý
-
-  printf("------------- ÕýÈ·ÐÔ²âÊÔ - program_01_01 ¿ªÊ¼ -------------\n");
-  program_01_01(id, size_of_id, pq_arr, SMALL_SIZE_OF_PQ_ARR, 1);
-  printf("------------- ÕýÈ·ÐÔ²âÊÔ - program_01_01 ½áÊø -------------\n\n\n");
-
-  id = init_id(size_of_id);
-  printf("------------- ÕýÈ·ÐÔ²âÊÔ - program_01_02 ¿ªÊ¼ -------------\n");
-  program_01_02(id, size_of_id, pq_arr, SMALL_SIZE_OF_PQ_ARR, 1);
-  printf("------------- ÕýÈ·ÐÔ²âÊÔ - program_01_02 ½áÊø -------------\n");
-}
-
-/** ²âÊÔÐÔÄÜ */
-void test_performance() {
-  int size_of_id = LARGE_SIZE; // ½ÚµãÊý×éµÄ´óÐ¡
-  int *id = init_id(size_of_id);  // ½ÚµãÊý×é
-  int *pq_arr = init_pq_arr(LARGE_SIZE); // pºÍqµÄÊý×é£¬ÓÃÓÚÄ£ÄâÊäÈëÊý¾Ý
-
-  printf("\n\n\n------------- ÐÔÄÜ²âÊÔ - program_01_01 ¿ªÊ¼ -------------\n");
-  clock_t start = clock();
-  program_01_01(id, size_of_id, pq_arr, LARGE_SIZE, 0);
-  clock_t end = clock();
-
-  printf("program_01_01³ÌÐòºÄÊ±ºÁÃë£º%lf\n", (double) (end - start));
-  printf("------------- ÐÔÄÜ²âÊÔ - program_01_01 ½áÊø -------------\n\n\n");
-
-  id = init_id(size_of_id);
-  pq_arr = init_pq_arr(LARGE_SIZE); // pºÍqµÄÊý×é£¬ÓÃÓÚÄ£ÄâÊäÈëÊý¾Ý
-  printf("------------- ÐÔÄÜ²âÊÔ - program_01_02 ¿ªÊ¼ -------------\n");
-  start = clock();
-  program_01_02(id, size_of_id, pq_arr, LARGE_SIZE, 0);
-  end = clock();
-  printf("program_01_02³ÌÐòºÄÊ±ºÁÃë£º%lf\n", (double) (end - start));
-  printf("------------- ÐÔÄÜ²âÊÔ - program_01_02 ½áÊø -------------\n");
-}
-
-int main() {
-  setbuf(stdout, NULL); // ½«±ê×¼Êä³öµÄ»º´æÇøÇåÁã£¬·ÀÖ¹printf²»¼°Ê±´òÓ¡
-  test_correctness(); // ²âÊÔÕýÈ·ÐÔ
-  test_performance(); // ²âÊÔÐÔÄÜ
-  return 0;
 }
 

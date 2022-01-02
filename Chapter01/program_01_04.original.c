@@ -9,8 +9,10 @@ main() {
     sz[i] = 1;
   }
   while (scanf("%d %d\n", &p, &q) == 2) {
-    for (i = p; i != id[i]; i = id[i]);
-    for (j = q; j != id[j]; j = id[j]);
+    for (i = p; i != id[i]; i = id[i])
+      id[i] = id[id[i]];
+    for (j = q; j != id[j]; j = id[j])
+      id[j] = id[id[j]];
     if (i == j) continue;
     if (sz[i] < sz[j]) {
       id[i] = j;

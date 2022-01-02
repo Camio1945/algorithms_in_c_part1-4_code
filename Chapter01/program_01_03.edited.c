@@ -1,50 +1,50 @@
 #include <stdio.h>
 
-/** ³£Á¿N£¬±íÊ¾Êý×éµÄ´óÐ¡ */
+/** å¸¸é‡Nï¼Œè¡¨ç¤ºæ•°ç»„çš„å¤§å° */
 #define N 10
 
 /**
- * Á¬Í¨ÎÊÌâ£¨¸Ä½ø°æ1£©£º
+ * è¿žé€šé—®é¢˜ï¼ˆæ”¹è¿›ç‰ˆ2ï¼‰ï¼š
  * <pre>
- *   ±¾³ÌÐòÊÇ program_01_02.edited.c ³ÌÐòµÄ¸Ä½ø°æ£¬Ïà¹Ø×¢ÊÍ²»ÔÙÖØ¸´¡£
- *   ÔÚÉÏÒ»°æµÄ³ÌÐòÖÐ£¬³ÌÐò¿É·ÖÎª¸ö¹¦ÄÜ£¬Ò»¸öÊÇ²éÕÒ£¬Ò»¸öÊÇºÏ²¢£¬²éÕÒµÄÐ§ÂÊºÜ¸ß£¬µ«ÊÇºÏ²¢µÄÐ§ÂÊºÜµÍ£¬Ã¿´ÎºÏ²¢¶¼Òª±éÀúÊý×éÖÐËùÓÐµÄ½Úµã¡£
- *   ÔÚÕâÒ»°æ±¾ÖÐ£¬ÒýÈëÁËÊ÷ÐÍ½á¹¹£º
- *      ¼ÙÉèÓÐÒ»¸öÒ»Î¬Êý×éa£¬´óÐ¡Îª10£¬a[0]µ½a[9]ÖÐ´æµÄÖµ·Ö±ðÎª0~9£¬¼´Ã¿¸öÔªËØµÄÖµ¶¼²»Ò»Ñù£¬Ã¿¸ö½Úµã¶¼ÊÇ¸ù½Úµã¡£
- *      ³ÌÐòÈÏÎª£¬µ±a[i]ºÍa[j]µÄ¸ù½Úµã²»Ò»ÑùÊ±£¬iºÍj²»Á¬Í¨£¬¸ù½ÚµãÒ»ÑùÊ±£¬iºÍjÁ¬Í¨¡£
- *      ÒÔa[1]µ½a[2]ÎªÀý£¬³ÌÐò³õÊ¼ÖµÈçÏÂ£º
+ *   æœ¬ç¨‹åºæ˜¯ program_01_02.edited.c ç¨‹åºçš„æ”¹è¿›ç‰ˆï¼Œç›¸å…³æ³¨é‡Šä¸å†é‡å¤ã€‚
+ *
+ *   åœ¨è¿™ä¸€ç‰ˆæœ¬ä¸­ï¼Œå¼•å…¥äº†æ ‘åž‹ç»“æž„ï¼š
+ *      å‡è®¾æœ‰ä¸€ä¸ªä¸€ç»´æ•°ç»„aï¼Œå¤§å°ä¸º10ï¼Œa[0]åˆ°a[9]ä¸­å­˜çš„å€¼åˆ†åˆ«ä¸º0~9ï¼Œå³æ¯ä¸ªå…ƒç´ çš„å€¼éƒ½ä¸ä¸€æ ·ï¼Œæ¯ä¸ªèŠ‚ç‚¹éƒ½æ˜¯æ ¹èŠ‚ç‚¹ã€‚
+ *      ç¨‹åºè®¤ä¸ºï¼Œå½“a[i]å’Œa[j]çš„æ ¹èŠ‚ç‚¹ä¸ä¸€æ ·æ—¶ï¼Œiå’Œjä¸è¿žé€šï¼Œæ ¹èŠ‚ç‚¹ä¸€æ ·æ—¶ï¼Œiå’Œjè¿žé€šã€‚
+ *      ä»¥a[1]åˆ°a[2]ä¸ºä¾‹ï¼Œç¨‹åºåˆå§‹å€¼å¦‚ä¸‹ï¼š
  *          a[1] a[2] a[3]
  *          1    2    3
- *      ÊäÈë`1 2`ºó£¬a[2]µÄÖµ¸Ä³ÉÁË1£¬×¢ÒâÕâÀïµÄ1Ö¸µÄÊÇÏÂ±êÎª1£¬¸ù¾Ýa[1]ÀïÃæµÄÖµÕÒµ½¶ÔÓ¦ÏÂ±êÖÐµÄÖµ£¬
- *                                ´ËÊ±a[2]²»ÔÙÊÇ¸ù½Úµã£¬¶øÊÇa[1]µÄ×Ó½Úµã£¬a[1]ºÍa[2]ÓµÓÐÏàÍ¬µÄ¸ù½Úµãa[1]£¬ËùÒÔa[1]ºÍa[2]ÊÇÁ¬Í¨µÄ£º
+ *      è¾“å…¥`1 2`åŽï¼Œa[2]çš„å€¼æ”¹æˆäº†1ï¼Œæ³¨æ„è¿™é‡Œçš„1æŒ‡çš„æ˜¯ä¸‹æ ‡ä¸º1ï¼Œæ ¹æ®a[1]é‡Œé¢çš„å€¼æ‰¾åˆ°å¯¹åº”ä¸‹æ ‡ä¸­çš„å€¼ï¼Œ
+ *                                æ­¤æ—¶a[2]ä¸å†æ˜¯æ ¹èŠ‚ç‚¹ï¼Œè€Œæ˜¯a[1]çš„å­èŠ‚ç‚¹ï¼Œa[1]å’Œa[2]æ‹¥æœ‰ç›¸åŒçš„æ ¹èŠ‚ç‚¹a[1]ï¼Œæ‰€ä»¥a[1]å’Œa[2]æ˜¯è¿žé€šçš„ï¼š
  *          a[1] a[2] a[3]
  *          1    1    3
- *      ÊäÈë`2 3`ºó£¬a[3]µÄÖµ±ä³ÉÁË1£¬´ËÊ±a[3]²»ÔÙÊÇ¸ù½Úµã£¬¶øÊÇa[1]µÄ×Ó½Úµã£¬´ËÊ±3¸ö½Úµã¶¼Á¬Í¨ÁË£¬a[2]ºÍa[3]¶¼ÊÇa[1]µÄ×Ó½Úµã£º
+ *      è¾“å…¥`2 3`åŽï¼Œa[3]çš„å€¼å˜æˆäº†1ï¼Œæ­¤æ—¶a[3]ä¸å†æ˜¯æ ¹èŠ‚ç‚¹ï¼Œè€Œæ˜¯a[1]çš„å­èŠ‚ç‚¹ï¼Œæ­¤æ—¶3ä¸ªèŠ‚ç‚¹éƒ½è¿žé€šäº†ï¼Œa[2]å’Œa[3]éƒ½æ˜¯a[1]çš„å­èŠ‚ç‚¹ï¼š
  *          a[1] a[2] a[3]
  *          1    1    1
  * </pre>
  *
  * @return
  */
-main() {
-  setbuf(stdout, NULL); // ½«±ê×¼Êä³öµÄ»º´æÇøÇåÁã£¬·ÀÖ¹printf²»¼°Ê±´òÓ¡
+int main() {
+  setbuf(stdout, NULL); // å°†æ ‡å‡†è¾“å‡ºçš„ç¼“å­˜åŒºæ¸…é›¶ï¼Œé˜²æ­¢printfä¸åŠæ—¶æ‰“å°
   int i, p, q, root_of_p, root_of_q, id[N], depth_arr[N];
   for (i = 0; i < N; i++) {
     id[i] = i;
     depth_arr[i] = 1;
   }
-  printf("ÇëÊäÈëÒ»¶ÔÊý×Ö£¨10ÒÔÄÚ£©£¬Á½¸öÊý×ÖÖÐ¼äÒÔ¿Õ¸ñ·Ö¸ô£º\n");
+  printf("è¯·è¾“å…¥ä¸€å¯¹æ•°å­—ï¼ˆ10ä»¥å†…ï¼‰ï¼Œä¸¤ä¸ªæ•°å­—ä¸­é—´ä»¥ç©ºæ ¼åˆ†éš”ï¼š\n");
   while (scanf("%d %d", &p, &q) == 2) {
-    printf("´¦ÀíÖ®Ç°µÄÊý×éÎª£º\t");
+    printf("å¤„ç†ä¹‹å‰çš„æ•°ç»„ä¸ºï¼š\t");
     for (i = 0; i < N; i++) {
       printf("%d ", id[i]);
     }
-    // ÕâÀï×¢ÊÍµôµÄÊÇÔ­ÊéµÄÐ´·¨£¬ÓÃÒ»ÐÐ´úÂë¾ÍÍê³ÉÁË get_root ·½·¨µÄ¹¦ÄÜ
     for (root_of_p = p; root_of_p != id[root_of_p]; root_of_p = id[root_of_p]);
     for (root_of_q = q; root_of_q != id[root_of_q]; root_of_q = id[root_of_q]);
     if (root_of_p == root_of_q) {
-      printf("\tÁ¬Í¨£º%d %d\n", p, q);
+      printf("\tè¿žé€šï¼š%d %d\n", p, q);
       continue;
     }
+    // ä»¥ä¸‹çš„ if-else å°±æ˜¯ç›¸å¯¹äºŽç¬¬2ç‰ˆæœ¬çš„æ”¹è¿›éƒ¨åˆ†
     if (depth_arr[root_of_p] < depth_arr[root_of_q]) {
       id[root_of_p] = root_of_q;
       depth_arr[root_of_q] += depth_arr[root_of_p];
@@ -52,12 +52,11 @@ main() {
       id[root_of_q] = root_of_p;
       depth_arr[root_of_p] += depth_arr[root_of_q];
     }
-    printf("\t²»Á¬Í¨£º%d %d\n", p, q);
-    printf("´¦ÀíÖ®ºóµÄÊý×éÎª£º\t");
+    printf("\tä¸è¿žé€šï¼š%d %d\n", p, q);
+    printf("å¤„ç†ä¹‹åŽçš„æ•°ç»„ä¸ºï¼š\t");
     for (i = 0; i < N; i++) {
       printf("%d ", id[i]);
     }
     printf("\n");
   }
 }
-
