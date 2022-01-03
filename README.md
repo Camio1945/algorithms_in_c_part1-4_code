@@ -6,7 +6,13 @@
 
 原书版本：第3版。
 
-开发工具：CLion。**执行C文件时，运行模式(Run)会有中文乱码问题，请使用调试模式(Debug)**
+开发工具：CLion。
+
+乱码问题参考：
+
+[CLion在Run或Debug时中文乱码的解决方案](https://cloud.tencent.com/developer/article/1858478)
+
+[win10 设置系统默认编码为utf-8](https://jingyan.baidu.com/article/25648fc1471e6a9191fd002e.html)
 
 ***
 
@@ -16,14 +22,18 @@
 
 &emsp;&emsp;`Chapter01`：第1章
 
-&emsp;&emsp;&emsp;&emsp;`program_01_01.edited.c`：第1章的第1个示例，其中的代码是经过修改的（至少会增加注释）
-&emsp;&emsp;&emsp;&emsp;`program_01_01.original.c`：第1章的第1个示例，其中的代码是原书中的原始代码，一字未改（可能会不小心格式化了）
+&emsp;&emsp;&emsp;&emsp;`program_01_02`：程序1.2
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;`program_01_02.charts.html`：示意图，直接在浏览器中打开
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;`program_01_02.edited.c`：在原书代码的基础上修改过的代码，代码逻辑一致，但是增加了注释和提示语
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;`program_01_02.original.c`：原书中的原始代码，一字未改（可能会不小心格式化了）
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;`program_01_02.test.c`：测试用例
 
-&emsp;&emsp;`Chapter01`：第2章
+&emsp;&emsp;`Chapter02`：第2章
 
-&emsp;&emsp;&emsp;&emsp;文件略
+&emsp;&emsp;&emsp;&emsp;文件夹略
 
 `temp.c`文件是一个临时文件，因为不想改动原书的代码，但时常又需要自己改改做测试，就会复制到`temp.c`中，可忽略。
+`temp.html`文件也是一个临时文件，可忽略。
 
 ***
 
@@ -142,4 +152,5 @@ main() {
 
 1. 程序1.1：[博客](https://blog.csdn.net/blueskybluesoul/article/details/122115288)、[视频](https://www.bilibili.com/video/BV1hD4y1c7xQ/)
 2. 程序1.2：[博客](https://blog.csdn.net/blueskybluesoul/article/details/122164615)、[视频](https://www.bilibili.com/video/BV1Vu411D7SH)
+2. 程序1.3：[博客](https://blog.csdn.net/blueskybluesoul/article/details/122180163)、[视频](https://www.bilibili.com/video/bv1zi4y1R71K)
 2. 

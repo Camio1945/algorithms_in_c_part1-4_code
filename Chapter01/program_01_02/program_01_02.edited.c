@@ -52,6 +52,7 @@ main() {
       printf("\t连通：%d %d\n", p, q);
       continue;
     }
+    // 【关键代码段】下面一行代码完成将两个节点指向同一个根节点
     id[root_of_p] = id[root_of_q];
     printf("\t不连通：%d %d\n", p, q);
     printf("处理之后的数组为：\t");

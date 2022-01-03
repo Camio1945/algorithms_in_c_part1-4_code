@@ -7,9 +7,8 @@
  * 连通问题（改进版3）：
  * <pre>
  *   本程序是 program_01_03.edited.c 程序的改进版，相关注释不再重复。
- *   两个版本都是用树来实现，合并时的算法是一样的，区别在于查找时的算法。
- *   1.3版本查找时，是一层一层往上找根节点。
- *   1.4版本查找时，是两层两层往上找根节点，因此速度快一些。
+ *   1.3版本里，如果两个节点已经连通，则不做处理。
+ *   1.4版本里，如果两个节点已经连通，还是会做处理，把树的深度变小，这样往上找根节点时要查找的次数就少了。
  * </pre>
  *
  * @return
@@ -27,6 +26,7 @@ main() {
     for (i = 0; i < N; i++) {
       printf("%d ", id[i]);
     }
+    // 【关键代码段】以下的两个for循环是针对上一版的改进点
     for (root_of_p = p; root_of_p != id[root_of_p]; root_of_p = id[root_of_p]) {
       id[root_of_p] = id[id[root_of_p]];
     }
@@ -35,6 +35,11 @@ main() {
     }
     if (root_of_p == root_of_q) {
       printf("\t连通：%d %d\n", p, q);
+      printf("处理之后的数组为：\t");
+      for (i = 0; i < N; i++) {
+        printf("%d ", id[i]);
+      }
+      printf("\n");
       continue;
     }
     if (depth_arr[root_of_p] < depth_arr[root_of_q]) {

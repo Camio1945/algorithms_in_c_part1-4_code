@@ -7,8 +7,8 @@
  * 连通问题（改进版2）：
  * <pre>
  *   本程序是 program_01_02.edited.c 程序的改进版，相关注释不再重复。
- *
- *   在这一版本中，引入了树型结构：
+ *   看这里：https://blog.csdn.net/blueskybluesoul/article/details/122180163
+ *   在这一版本中，树型结构有了变化：
  *      假设有一个一维数组a，大小为10，a[0]到a[9]中存的值分别为0~9，即每个元素的值都不一样，每个节点都是根节点。
  *      程序认为，当a[i]和a[j]的根节点不一样时，i和j不连通，根节点一样时，i和j连通。
  *      以a[1]到a[2]为例，程序初始值如下：
@@ -44,7 +44,7 @@ int main() {
       printf("\t连通：%d %d\n", p, q);
       continue;
     }
-    // 以下的 if-else 就是相对于第2版本的改进部分
+    // 【关键代码段】以下的 if-else 就是相对于program_01_01.edited.c的改进部分，将小树挂在大树下面
     if (depth_arr[root_of_p] < depth_arr[root_of_q]) {
       id[root_of_p] = root_of_q;
       depth_arr[root_of_q] += depth_arr[root_of_p];

@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>程序1.2</title>
+  <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.2.2/echarts.min.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+<h3>程序1.2</h3>
+<h4>注：输入`A B`的意思是，把A的根节点挂到B的根节点下面，如果已经连通则不处理。</h4>
+<div id="chart0" style="width: 99%;height:100px;border:1px solid #999;padding-top:20px;"></div>
+<script type="text/javascript">
+  let chartDom0 = document.getElementById('chart0');
+  let myChart0 = echarts.init(chartDom0);
+  myChart0.showLoading();
+  let dataArr0 = [{name: 0}, {name: 1}, {name: 2}, {name: 3}, {name: 4}, {name: 5}, {name: 6}, {name: 7}, {name: 8}, {name: 9}];
+  let series0 = [{
+    type: 'tree',
+    data: [dataArr0[0]],
+    left: '0.0%',
+    right: '90.0%',
+    top: 60,
+    bottom: 40,
+    symbol: 'emptyCircle',
+    symbolSize: 30,
+    orient: 'vertical',
+    expandAndCollapse: false,
+    animationDurationUpdate: 750,
+    label: {fontWeight: 900}
+  }, {
+    type: 'tree',
+    data: [dataArr0[1]],
+    left: '10.0%',
+    right: '80.0%',
+    top: 60,
+    bottom: 40,
+    symbol: 'emptyCircle',
+    symbolSize: 30,
+    orient: 'vertical',
+    expandAndCollapse: false,
+    animationDurationUpdate: 750,
+    label: {fontWeight: 900}
+  }, {
+    type: 'tree',
+    data: [dataArr0[2]],
+    left: '20.0%',
+    right: '70.0%',
+    top: 60,
+    bottom: 40,
+    symbol: 'emptyCircle',
+    symbolSize: 30,
+    orient: 'vertical',
+    expandAndCollapse: false,
+    animationDurationUpdate: 750,
+    label: {fontWeight: 900}
+  }, {
+    type: 'tree',
+    data: [dataArr0[3]],
+    left: '30.0%',
+    right: '60.0%',
+    top: 60,
+    bottom: 40,
+    symbol: 'emptyCircle',
+    symbolSize: 30,
+    orient: 'vertical',
+    expandAndCollapse: false,
+    animationDurationUpdate: 750,
+    label: {fontWeight: 900}
+  }, {
+    type: 'tree',
+    data: [dataArr0[4]],
+    left: '40.0%',
+    right: '50.0%',
+    top: 60,
+    bottom: 40,
+    symbol: 'emptyCircle',
+    symbolSize: 30,
+    orient: 'vertical',
+    expandAndCollapse: false,
+    animationDurationUpdate: 750,
+    label: {fontWeight: 900}
+  }, {
+    type: 'tree',
+    data: [dataArr0[5]],
+    left: '50.0%',
+    right: '40.0%',
+    top: 60,
+    bottom: 40,
+    symbol: 'emptyCircle',
+    symbolSize: 30,
+    orient: 'vertical',
+    expandAndCollapse: false,
+    animationDurationUpdate: 750,
+    label: {fontWeight: 900}
+  }, {
+    type: 'tree',
+    data: [dataArr0[6]],
+    left: '60.0%',
+    right: '30.0%',
+    top: 60,
+    bottom: 40,
+    symbol: 'emptyCircle',
+    symbolSize: 30,
+    orient: 'vertical',
+    expandAndCollapse: false,
+    animationDurationUpdate: 750,
+    label: {fontWeight: 900}
+  }, {
+    type: 'tree',
+    data: [dataArr0[7]],
+    left: '70.0%',
+    right: '20.0%',
+    top: 60,
+    bottom: 40,
+    symbol: 'emptyCircle',
+    symbolSize: 30,
+    orient: 'vertical',
+    expandAndCollapse: false,
+    animationDurationUpdate: 750,
+    label: {fontWeight: 900}
+  }, {
+    type: 'tree',
+    data: [dataArr0[8]],
+    left: '80.0%',
+    right: '10.0%',
+    top: 60,
+    bottom: 40,
+    symbol: 'emptyCircle',
+    symbolSize: 30,
+    orient: 'vertical',
+    expandAndCollapse: false,
+    animationDurationUpdate: 750,
+    label: {fontWeight: 900}
+  }, {
+    type: 'tree',
+    data: [dataArr0[9]],
+    left: '90.0%',
+    right: '0.0%',
+    top: 60,
+    bottom: 40,
+    symbol: 'emptyCircle',
+    symbolSize: 30,
+    orient: 'vertical',
+    expandAndCollapse: false,
+    animationDurationUpdate: 750,
+    label: {fontWeight: 900}
+  }];
+  let option0 = {
+    title: {text: '初始化', left: 'center',},
+    series: series0
+  }
+  myChart0.hideLoading();
+  myChart0.setOption(option0);
+  option0 && myChart0.setOption(option0);
+</script>
+
+<div id="chart1" style="width: 99%;height:200px;border:1px solid #999;padding-top:20px;"></div>
+<script type="text/javascript">
+  let chartDom1 = document.getElementById('chart1');
+  let myChart1 = echarts.init(chartDom1);
+  myChart1.showLoading();
+  let dataArr1 = [{name: 0}, {name: 1}, {name: 2}, {
+    children: [{name: 3}],
+    name: 4
+  }, {name: 5}, {name: 6}, {name: 7}, {name: 8}, {name: 9}];
+  let series1 = [{
+    type: 'tree',
+    data: [dataArr1[0]],
+    left: '0.0%',
+    right: '88.88%',
+    top: 60,
+    bottom: 40,
+    symbol: 'emptyCircle',
+    symbolSize: 30,
+    orient: 'vertical',
+    expandAndCollapse: false,
+    animationDurationUpdate: 750,
+    label: {fontWeight: 900}
+  }, {
+    type: 'tree',
+    data: [dataArr1[1]],
+    left: '11.11%',
+    right: '77.77%',
+    top: 60,
+    bottom: 40,
+    symbol: 'emptyCircle',
+    symbolSize: 30,
+    orient: 'vertical',
+    expandAndCollapse: false,
+    animationDurationUpdate: 750,
+    label: {fontWeight: 900}
+  }, {
+    type: 'tree',
+    data: [dataArr1[2]],
+    left: '22.22%',
+    right: '66.66%',
+    top: 60,
+    bottom: 40,
+    symbol: 'emptyCircle',
+    symbolSize: 30,
+    orient: 'vertical',
+    expandAndCollapse: false,
+    animationDurationUpdate: 750,
+    label: {fontWeight: 900}
+  }, {
+    type: 'tree',
+    data: [dataArr1[3]],
+    left: '33.33%',
+    right: '55.55%',
+    top: 60,
+    bottom: 40,
+    symbol: 'emptyCircle',
+    symbolSize: 30,
+    orient: 'vertical',
+    expandAndCollapse: false,
+    animationDurationUpdate: 750,
+    label: {fontWeight: 900}
+  }, {
+    type: 'tree',
+    data: [dataArr1[4]],
+    left: '44.44%',
+    right: '44.44%',
+    top: 60,
+    bottom: 40,
+    symbol: 'emptyCircle',
+    symbolSize: 30,
+    orient: 'vertical',
+    expandAndCollapse: false,
+    animationDurationUpdate: 750,
+    label: {fontWeight: 900}
+  }, {
+    type: 'tree',
+    data: [dataArr1[5]],
+    left: '55.55%',
+    right: '33.33%',
+    top: 60,
+    bottom: 40,
+    symbol: 'emptyCircle',
+    symbolSize: 30,
+    orient: 'vertical',
+    expandAndCollapse: false,
+    animationDurationUpdate: 750,
+    label: {fontWeight: 900}
+  }, {
+    type: 'tree',
+    data: [dataArr1[6]],
+    left: '66.66%',
+    right: '22.22%',
+    top: 60,
+    bottom: 40,
+    symbol: 'emptyCircle',
+    symbolSize: 30,
+    orient: 'vertical',
+    expandAndCollapse: false,
+    animationDurationUpdate: 750,
+    label: {fontWeight: 900}
+  }, {
+    type: 'tree',
+    data: [dataArr1[7]],
+    left: '77.77%',
+    right: '11.11%',
+    top: 60,
+    bottom: 40,
+    symbol: 'emptyCircle',
+    symbolSize: 30,
+    orient: 'vertical',
+    expandAndCollapse: false,
+    animationDurationUpdate: 750,
+    label: {fontWeight: 900}
+  }, {
+    type: 'tree',
+    data: [dataArr1[8]],
+    left: '88.88%',
+    right: '0.0%',
+    top: 60,
+    bottom: 40,
+    symbol: 'emptyCircle',
+    symbolSize: 30,
+    orient: 'vertical',
+    expandAndCollapse: false,
+    animationDurationUpdate: 750,
+    label: {fontWeight: 900}
+  }];
+  let option1 = {
+    title: {text: '输入`3 4`', left: 'center',},
+    series: series1
+  }
+  myChart1.hideLoading();
+  myChart1.setOption(option1);
+  option1 && myChart1.setOption(option1);
+</script>
+
+<div id="chart2" style="width: 99%;height:300px;border:1px solid #999;padding-top:20px;"></div>
+<script type="text/javascript">
+  let chartDom2 = document.getElementById('chart2');
+  let myChart2 = echarts.init(chartDom2);
+  myChart2.showLoading();
+  let dataArr2 = [{name: 0}, {name: 1}, {name: 2}, {name: 5}, {name: 6}, {name: 7}, {name: 8}, {
+    children: [{
+      children: [{name: 3}],
+      name: 4
+    }], name: 9
+  }];
+  let series2 = [{
+    type: 'tree',
+    data: [dataArr2[0]],
+    left: '0.0%',
+    right: '87.5%',
+    top: 60,
+    bottom: 40,
+    symbol: 'emptyCircle',
+    symbolSize: 30,
+    orient: 'vertical',
+    expandAndCollapse: false,
+    animationDurationUpdate: 750,
+    label: {fontWeight: 900}
+  }, {
+    type: 'tree',
+    data: [dataArr2[1]],
+    left: '12.5%',
+    right: '75.0%',
+    top: 60,
+    bottom: 40,
+    symbol: 'emptyCircle',
+    symbolSize: 30,
+    orient: 'vertical',
+    expandAndCollapse: false,
+    animationDurationUpdate: 750,
+    label: {fontWeight: 900}
+  }, {
+    type: 'tree',
+    data: [dataArr2[2]],
+    left: '25.0%',
+    right: '62.5%',
+    top: 60,
+    bottom: 40,
+    symbol: 'emptyCircle',
+    symbolSize: 30,
+    orient: 'vertical',
+    expandAndCollapse: false,
+    animationDurationUpdate: 750,
+    label: {fontWeight: 900}
+  }, {
+    type: 'tree',
+    data: [dataArr2[3]],
+    left: '37.5%',
+    right: '50.0%',
+    top: 60,
+    bottom: 40,
+    symbol: 'emptyCircle',
+    symbolSize: 30,
+    orient: 'vertical',
+    expandAndCollapse: false,
+    animationDurationUpdate: 750,
+    label: {fontWeight: 900}
+  }, {
+    type: 'tree',
+    data: [dataArr2[4]],
+    left: '50.0%',
+    right: '37.5%',
+    top: 60,
+    bottom: 40,
+    symbol: 'emptyCircle',
+    symbolSize: 30,
+    orient: 'vertical',
+    expandAndCollapse: false,
+    animationDurationUpdate: 750,
+    label: {fontWeight: 900}
+  }, {
+    type: 'tree',
+    data: [dataArr2[5]],
+    left: '62.5%',
+    right: '25.0%',
+    top: 60,
+    bottom: 40,
+    symbol: 'emptyCircle',
+    symbolSize: 30,
+    orient: 'vertical',
+    expandAndCollapse: false,
+    animationDurationUpdate: 750,
+    label: {fontWeight: 900}
+  }, {
+    type: 'tree',
+    data: [dataArr2[6]],
+    left: '75.0%',
+    right: '12.5%',
+    top: 60,
+    bottom: 40,
+    symbol: 'emptyCircle',
+    symbolSize: 30,
+    orient: 'vertical',
+    expandAndCollapse: false,
+    animationDurationUpdate: 750,
+    label: {fontWeight: 900}
+  }, {
+    type: 'tree',
+    data: [dataArr2[7]],
+    left: '87.5%',
+    right: '0.0%',
+    top: 60,
+    bottom: 40,
+    symbol: 'emptyCircle',
+    symbolSize: 30,
+    orient: 'vertical',
+    expandAndCollapse: false,
+    animationDurationUpdate: 750,
+    label: {fontWeight: 900}
+  }];
+  let option2 = {
+    title: {text: '输入`4 9`', left: 'center',},
+    series: series2
+  }
+  myChart2.hideLoading();
+  myChart2.setOption(option2);
+  option2 && myChart2.setOption(option2);
+</script>
+
+<div id="chart3" style="width: 99%;height:300px;border:1px solid #999;padding-top:20px;"></div>
+<script type="text/javascript">
+  let chartDom3 = document.getElementById('chart3');
+  let myChart3 = echarts.init(chartDom3);
+  myChart3.showLoading();
+  let dataArr3 = [{
+    children: [{name: 8}],
+    name: 0
+  }, {name: 1}, {name: 2}, {name: 5}, {name: 6}, {name: 7}, {children: [{children: [{name: 3}], name: 4}], name: 9}];
+  let series3 = [{
+    type: 'tree',
+    data: [dataArr3[0]],
+    left: '0.0%',
+    right: '85.74%',
+    top: 60,
+    bottom: 40,
+    symbol: 'emptyCircle',
+    symbolSize: 30,
+    orient: 'vertical',
+    expandAndCollapse: false,
+    animationDurationUpdate: 750,
+    label: {fontWeight: 900}
+  }, {
+    type: 'tree',
+    data: [dataArr3[1]],
+    left: '14.29%',
+    right: '71.44999999999999%',
+    top: 60,
+    bottom: 40,
+    symbol: 'emptyCircle',
+    symbolSize: 30,
+    orient: 'vertical',
+    expandAndCollapse: false,
+    animationDurationUpdate: 750,
+    label: {fontWeight: 900}
+  }, {
+    type: 'tree',
+    data: [dataArr3[2]],
+    left: '28.58%',
+    right: '57.16%',
+    top: 60,
+    bottom: 40,
+    symbol: 'emptyCircle',
+    symbolSize: 30,
+    orient: 'vertical',
+    expandAndCollapse: false,
+    animationDurationUpdate: 750,
+    label: {fontWeight: 900}
+  }, {
+    type: 'tree',
+    data: [dataArr3[3]],
+    left: '42.87%',
+    right: '42.87%',
+    top: 60,
+    bottom: 40,
+    symbol: 'emptyCircle',
+    symbolSize: 30,
+    orient: 'vertical',
+    expandAndCollapse: false,
+    animationDurationUpdate: 750,
+    label: {fontWeight: 900}
+  }, {
+    type: 'tree',
+    data: [dataArr3[4]],
+    left: '57.16%',
+    right: '28.58%',
+    top: 60,
+    bottom: 40,
+    symbol: 'emptyCircle',
+    symbolSize: 30,
+    orient: 'vertical',
+    expandAndCollapse: false,
+    animationDurationUpdate: 750,
+    label: {fontWeight: 900}
+  }, {
+    type: 'tree',
+    data: [dataArr3[5]],
+    left: '71.44999999999999%',
+    right: '14.29%',
+    top: 60,
+    bottom: 40,
+    symbol: 'emptyCircle',
+    symbolSize: 30,
+    orient: 'vertical',
+    expandAndCollapse: false,
+    animationDurationUpdate: 750,
+    label: {fontWeight: 900}
+  }, {
+    type: 'tree',
+    data: [dataArr3[6]],
+    left: '85.74%',
+    right: '0.0%',
+    top: 60,
+    bottom: 40,
+    symbol: 'emptyCircle',
+    symbolSize: 30,
+    orient: 'vertical',
+    expandAndCollapse: false,
+    animationDurationUpdate: 750,
+    label: {fontWeight: 900}
+  }];
+  let option3 = {
+    title: {text: '输入`8 0`', left: 'center',},
+    series: series3
+  }
+  myChart3.hideLoading();
+  myChart3.setOption(option3);
+  option3 && myChart3.setOption(option3);
+</script>
+
+<div id="chart4" style="width: 99%;height:300px;border:1px solid #999;padding-top:20px;"></div>
+<script type="text/javascript">
+  let chartDom4 = document.getElementById('chart4');
+  let myChart4 = echarts.init(chartDom4);
+  myChart4.showLoading();
+  let dataArr4 = [{
+    children: [{name: 8}],
+    name: 0
+  }, {name: 1}, {name: 5}, {name: 6}, {name: 7}, {children: [{name: 2}, {children: [{name: 3}], name: 4}], name: 9}];
+  let series4 = [{
+    type: 'tree',
+    data: [dataArr4[0]],
+    left: '0.0%',
+    right: '83.35000000000001%',
+    top: 60,
+    bottom: 40,
+    symbol: 'emptyCircle',
+    symbolSize: 30,
+    orient: 'vertical',
+    expandAndCollapse: false,
+    animationDurationUpdate: 750,
+    label: {fontWeight: 900}
+  }, {
+    type: 'tree',
+    data: [dataArr4[1]],
+    left: '16.67%',
+    right: '66.68%',
+    top: 60,
+    bottom: 40,
+    symbol: 'emptyCircle',
+    symbolSize: 30,
+    orient: 'vertical',
+    expandAndCollapse: false,
+    animationDurationUpdate: 750,
+    label: {fontWeight: 900}
+  }, {
+    type: 'tree',
+    data: [dataArr4[2]],
+    left: '33.34%',
+    right: '50.010000000000005%',
+    top: 60,
+    bottom: 40,
+    symbol: 'emptyCircle',
+    symbolSize: 30,
+    orient: 'vertical',
+    expandAndCollapse: false,
+    animationDurationUpdate: 750,
+    label: {fontWeight: 900}
+  }, {
+    type: 'tree',
+    data: [dataArr4[3]],
+    left: '50.010000000000005%',
+    right: '33.34%',
+    top: 60,
+    bottom: 40,
+    symbol: 'emptyCircle',
+    symbolSize: 30,
+    orient: 'vertical',
+    expandAndCollapse: false,
+    animationDurationUpdate: 750,
+    label: {fontWeight: 900}
+  }, {
+    type: 'tree',
+    data: [dataArr4[4]],
+    left: '66.68%',
+    right: '16.67%',
+    top: 60,
+    bottom: 40,
+    symbol: 'emptyCircle',
+    symbolSize: 30,
+    orient: 'vertical',
+    expandAndCollapse: false,
+    animationDurationUpdate: 750,
+    label: {fontWeight: 900}
+  }, {
+    type: 'tree',
+    data: [dataArr4[5]],
+    left: '83.35000000000001%',
+    right: '0.0%',
+    top: 60,
+    bottom: 40,
+    symbol: 'emptyCircle',
+    symbolSize: 30,
+    orient: 'vertical',
+    expandAndCollapse: false,
+    animationDurationUpdate: 750,
+    label: {fontWeight: 900}
+  }];
+  let option4 = {
+    title: {text: '输入`2 3`', left: 'center',},
+    series: series4
+  }
+  myChart4.hideLoading();
+  myChart4.setOption(option4);
+  option4 && myChart4.setOption(option4);
+</script>
+
+<div id="chart5" style="width: 99%;height:300px;border:1px solid #999;padding-top:20px;"></div>
+<script type="text/javascript">
+  let chartDom5 = document.getElementById('chart5');
+  let myChart5 = echarts.init(chartDom5);
+  myChart5.showLoading();
+  let dataArr5 = [{children: [{name: 8}], name: 0}, {name: 1}, {
+    children: [{name: 5}],
+    name: 6
+  }, {name: 7}, {children: [{name: 2}, {children: [{name: 3}], name: 4}], name: 9}];
+  let series5 = [{
+    type: 'tree',
+    data: [dataArr5[0]],
+    left: '0.0%',
+    right: '80.0%',
+    top: 60,
+    bottom: 40,
+    symbol: 'emptyCircle',
+    symbolSize: 30,
+    orient: 'vertical',
+    expandAndCollapse: false,
+    animationDurationUpdate: 750,
+    label: {fontWeight: 900}
+  }, {
+    type: 'tree',
+    data: [dataArr5[1]],
+    left: '20.0%',
+    right: '60.0%',
+    top: 60,
+    bottom: 40,
+    symbol: 'emptyCircle',
+    symbolSize: 30,
+    orient: 'vertical',
+    expandAndCollapse: false,
+    animationDurationUpdate: 750,
+    label: {fontWeight: 900}
+  }, {
+    type: 'tree',
+    data: [dataArr5[2]],
+    left: '40.0%',
+    right: '40.0%',
+    top: 60,
+    bottom: 40,
+    symbol: 'emptyCircle',
+    symbolSize: 30,
+    orient: 'vertical',
+    expandAndCollapse: false,
+    animationDurationUpdate: 750,
+    label: {fontWeight: 900}
+  }, {
+    type: 'tree',
+    data: [dataArr5[3]],
+    left: '60.0%',
+    right: '20.0%',
+    top: 60,
+    bottom: 40,
+    symbol: 'emptyCircle',
+    symbolSize: 30,
+    orient: 'vertical',
+    expandAndCollapse: false,
+    animationDurationUpdate: 750,
+    label: {fontWeight: 900}
+  }, {
+    type: 'tree',
+    data: [dataArr5[4]],
+    left: '80.0%',
+    right: '0.0%',
+    top: 60,
+    bottom: 40,
+    symbol: 'emptyCircle',
+    symbolSize: 30,
+    orient: 'vertical',
+    expandAndCollapse: false,
+    animationDurationUpdate: 750,
+    label: {fontWeight: 900}
+  }];
+  let option5 = {
+    title: {text: '输入`5 6`', left: 'center',},
+    series: series5
+  }
+  myChart5.hideLoading();
+  myChart5.setOption(option5);
+  option5 && myChart5.setOption(option5);
+</script>
+
+<div id="chart6" style="width: 99%;height:300px;border:1px solid #999;padding-top:20px;"></div>
+<script type="text/javascript">
+  let chartDom6 = document.getElementById('chart6');
+  let myChart6 = echarts.init(chartDom6);
+  myChart6.showLoading();
+  let dataArr6 = [{children: [{name: 8}], name: 0}, {name: 1}, {
+    children: [{name: 5}],
+    name: 6
+  }, {name: 7}, {children: [{name: 2}, {children: [{name: 3}], name: 4}], name: 9}];
+  let series6 = [{
+    type: 'tree',
+    data: [dataArr6[0]],
+    left: '0.0%',
+    right: '80.0%',
+    top: 60,
+    bottom: 40,
+    symbol: 'emptyCircle',
+    symbolSize: 30,
+    orient: 'vertical',
+    expandAndCollapse: false,
+    animationDurationUpdate: 750,
+    label: {fontWeight: 900}
+  }, {
+    type: 'tree',
+    data: [dataArr6[1]],
+    left: '20.0%',
+    right: '60.0%',
+    top: 60,
+    bottom: 40,
+    symbol: 'emptyCircle',
+    symbolSize: 30,
+    orient: 'vertical',
+    expandAndCollapse: false,
+    animationDurationUpdate: 750,
+    label: {fontWeight: 900}
+  }, {
+    type: 'tree',
+    data: [dataArr6[2]],
+    left: '40.0%',
+    right: '40.0%',
+    top: 60,
+    bottom: 40,
+    symbol: 'emptyCircle',
+    symbolSize: 30,
+    orient: 'vertical',
+    expandAndCollapse: false,
+    animationDurationUpdate: 750,
+    label: {fontWeight: 900}
+  }, {
+    type: 'tree',
+    data: [dataArr6[3]],
+    left: '60.0%',
+    right: '20.0%',
+    top: 60,
+    bottom: 40,
+    symbol: 'emptyCircle',
+    symbolSize: 30,
+    orient: 'vertical',
+    expandAndCollapse: false,
+    animationDurationUpdate: 750,
+    label: {fontWeight: 900}
+  }, {
+    type: 'tree',
+    data: [dataArr6[4]],
+    left: '80.0%',
+    right: '0.0%',
+    top: 60,
+    bottom: 40,
+    symbol: 'emptyCircle',
+    symbolSize: 30,
+    orient: 'vertical',
+    expandAndCollapse: false,
+    animationDurationUpdate: 750,
+    label: {fontWeight: 900}
+  }];
+  let option6 = {
+    title: {text: '输入`2 9`', left: 'center',},
+    series: series6
+  }
+  myChart6.hideLoading();
+  myChart6.setOption(option6);
+  option6 && myChart6.setOption(option6);
+</script>
+
+<div id="chart7" style="width: 99%;height:300px;border:1px solid #999;padding-top:20px;"></div>
+<script type="text/javascript">
+  let chartDom7 = document.getElementById('chart7');
+  let myChart7 = echarts.init(chartDom7);
+  myChart7.showLoading();
+  let dataArr7 = [{children: [{name: 8}], name: 0}, {name: 1}, {name: 7}, {
+    children: [{name: 2}, {
+      children: [{name: 3}],
+      name: 4
+    }, {children: [{name: 5}], name: 6}], name: 9
+  }];
+  let series7 = [{
+    type: 'tree',
+    data: [dataArr7[0]],
+    left: '0.0%',
+    right: '75.0%',
+    top: 60,
+    bottom: 40,
+    symbol: 'emptyCircle',
+    symbolSize: 30,
+    orient: 'vertical',
+    expandAndCollapse: false,
+    animationDurationUpdate: 750,
+    label: {fontWeight: 900}
+  }, {
+    type: 'tree',
+    data: [dataArr7[1]],
+    left: '25.0%',
+    right: '50.0%',
+    top: 60,
+    bottom: 40,
+    symbol: 'emptyCircle',
+    symbolSize: 30,
+    orient: 'vertical',
+    expandAndCollapse: false,
+    animationDurationUpdate: 750,
+    label: {fontWeight: 900}
+  }, {
+    type: 'tree',
+    data: [dataArr7[2]],
+    left: '50.0%',
+    right: '25.0%',
+    top: 60,
+    bottom: 40,
+    symbol: 'emptyCircle',
+    symbolSize: 30,
+    orient: 'vertical',
+    expandAndCollapse: false,
+    animationDurationUpdate: 750,
+    label: {fontWeight: 900}
+  }, {
+    type: 'tree',
+    data: [dataArr7[3]],
+    left: '75.0%',
+    right: '0.0%',
+    top: 60,
+    bottom: 40,
+    symbol: 'emptyCircle',
+    symbolSize: 30,
+    orient: 'vertical',
+    expandAndCollapse: false,
+    animationDurationUpdate: 750,
+    label: {fontWeight: 900}
+  }];
+  let option7 = {
+    title: {text: '输入`5 9`', left: 'center',},
+    series: series7
+  }
+  myChart7.hideLoading();
+  myChart7.setOption(option7);
+  option7 && myChart7.setOption(option7);
+</script>
+
+<div id="chart8" style="width: 99%;height:300px;border:1px solid #999;padding-top:20px;"></div>
+<script type="text/javascript">
+  let chartDom8 = document.getElementById('chart8');
+  let myChart8 = echarts.init(chartDom8);
+  myChart8.showLoading();
+  let dataArr8 = [{children: [{name: 8}], name: 0}, {name: 1}, {
+    children: [{name: 2}, {
+      children: [{name: 3}],
+      name: 4
+    }, {children: [{name: 5}], name: 6}, {name: 7}], name: 9
+  }];
+  let series8 = [{
+    type: 'tree',
+    data: [dataArr8[0]],
+    left: '0.0%',
+    right: '66.66%',
+    top: 60,
+    bottom: 40,
+    symbol: 'emptyCircle',
+    symbolSize: 30,
+    orient: 'vertical',
+    expandAndCollapse: false,
+    animationDurationUpdate: 750,
+    label: {fontWeight: 900}
+  }, {
+    type: 'tree',
+    data: [dataArr8[1]],
+    left: '33.33%',
+    right: '33.33%',
+    top: 60,
+    bottom: 40,
+    symbol: 'emptyCircle',
+    symbolSize: 30,
+    orient: 'vertical',
+    expandAndCollapse: false,
+    animationDurationUpdate: 750,
+    label: {fontWeight: 900}
+  }, {
+    type: 'tree',
+    data: [dataArr8[2]],
+    left: '66.66%',
+    right: '0.0%',
+    top: 60,
+    bottom: 40,
+    symbol: 'emptyCircle',
+    symbolSize: 30,
+    orient: 'vertical',
+    expandAndCollapse: false,
+    animationDurationUpdate: 750,
+    label: {fontWeight: 900}
+  }];
+  let option8 = {
+    title: {text: '输入`7 3`', left: 'center',},
+    series: series8
+  }
+  myChart8.hideLoading();
+  myChart8.setOption(option8);
+  option8 && myChart8.setOption(option8);
+</script>
+
+<div id="chart9" style="width: 99%;height:400px;border:1px solid #999;padding-top:20px;"></div>
+<script type="text/javascript">
+  let chartDom9 = document.getElementById('chart9');
+  let myChart9 = echarts.init(chartDom9);
+  myChart9.showLoading();
+  let dataArr9 = [{
+    children: [{name: 8}, {
+      children: [{name: 2}, {
+        children: [{name: 3}],
+        name: 4
+      }, {children: [{name: 5}], name: 6}, {name: 7}], name: 9
+    }], name: 0
+  }, {name: 1}];
+  let series9 = [{
+    type: 'tree',
+    data: [dataArr9[0]],
+    left: '0.0%',
+    right: '50.0%',
+    top: 60,
+    bottom: 40,
+    symbol: 'emptyCircle',
+    symbolSize: 30,
+    orient: 'vertical',
+    expandAndCollapse: false,
+    animationDurationUpdate: 750,
+    label: {fontWeight: 900}
+  }, {
+    type: 'tree',
+    data: [dataArr9[1]],
+    left: '50.0%',
+    right: '0.0%',
+    top: 60,
+    bottom: 40,
+    symbol: 'emptyCircle',
+    symbolSize: 30,
+    orient: 'vertical',
+    expandAndCollapse: false,
+    animationDurationUpdate: 750,
+    label: {fontWeight: 900}
+  }];
+  let option9 = {
+    title: {text: '输入`4 8`', left: 'center',},
+    series: series9
+  }
+  myChart9.hideLoading();
+  myChart9.setOption(option9);
+  option9 && myChart9.setOption(option9);
+</script>
+
+<div id="chart10" style="width: 99%;height:400px;border:1px solid #999;padding-top:20px;"></div>
+<script type="text/javascript">
+  let chartDom10 = document.getElementById('chart10');
+  let myChart10 = echarts.init(chartDom10);
+  myChart10.showLoading();
+  let dataArr10 = [{
+    children: [{name: 8}, {
+      children: [{name: 2}, {
+        children: [{name: 3}],
+        name: 4
+      }, {children: [{name: 5}], name: 6}, {name: 7}], name: 9
+    }], name: 0
+  }, {name: 1}];
+  let series10 = [{
+    type: 'tree',
+    data: [dataArr10[0]],
+    left: '0.0%',
+    right: '50.0%',
+    top: 60,
+    bottom: 40,
+    symbol: 'emptyCircle',
+    symbolSize: 30,
+    orient: 'vertical',
+    expandAndCollapse: false,
+    animationDurationUpdate: 750,
+    label: {fontWeight: 900}
+  }, {
+    type: 'tree',
+    data: [dataArr10[1]],
+    left: '50.0%',
+    right: '0.0%',
+    top: 60,
+    bottom: 40,
+    symbol: 'emptyCircle',
+    symbolSize: 30,
+    orient: 'vertical',
+    expandAndCollapse: false,
+    animationDurationUpdate: 750,
+    label: {fontWeight: 900}
+  }];
+  let option10 = {
+    title: {text: '输入`5 6`', left: 'center',},
+    series: series10
+  }
+  myChart10.hideLoading();
+  myChart10.setOption(option10);
+  option10 && myChart10.setOption(option10);
+</script>
+
+<div id="chart11" style="width: 99%;height:400px;border:1px solid #999;padding-top:20px;"></div>
+<script type="text/javascript">
+  let chartDom11 = document.getElementById('chart11');
+  let myChart11 = echarts.init(chartDom11);
+  myChart11.showLoading();
+  let dataArr11 = [{
+    children: [{name: 8}, {
+      children: [{name: 2}, {
+        children: [{name: 3}],
+        name: 4
+      }, {children: [{name: 5}], name: 6}, {name: 7}], name: 9
+    }], name: 0
+  }, {name: 1}];
+  let series11 = [{
+    type: 'tree',
+    data: [dataArr11[0]],
+    left: '0.0%',
+    right: '50.0%',
+    top: 60,
+    bottom: 40,
+    symbol: 'emptyCircle',
+    symbolSize: 30,
+    orient: 'vertical',
+    expandAndCollapse: false,
+    animationDurationUpdate: 750,
+    label: {fontWeight: 900}
+  }, {
+    type: 'tree',
+    data: [dataArr11[1]],
+    left: '50.0%',
+    right: '0.0%',
+    top: 60,
+    bottom: 40,
+    symbol: 'emptyCircle',
+    symbolSize: 30,
+    orient: 'vertical',
+    expandAndCollapse: false,
+    animationDurationUpdate: 750,
+    label: {fontWeight: 900}
+  }];
+  let option11 = {
+    title: {text: '输入`0 2`', left: 'center',},
+    series: series11
+  }
+  myChart11.hideLoading();
+  myChart11.setOption(option11);
+  option11 && myChart11.setOption(option11);
+</script>
+
+<div id="chart12" style="width: 99%;height:500px;border:1px solid #999;padding-top:20px;"></div>
+<script type="text/javascript">
+  let chartDom12 = document.getElementById('chart12');
+  let myChart12 = echarts.init(chartDom12);
+  myChart12.showLoading();
+  let dataArr12 = [{
+    children: [{
+      children: [{name: 8}, {
+        children: [{name: 2}, {
+          children: [{name: 3}],
+          name: 4
+        }, {children: [{name: 5}], name: 6}, {name: 7}], name: 9
+      }], name: 0
+    }], name: 1
+  }];
+  let series12 = [{
+    type: 'tree',
+    data: [dataArr12[0]],
+    left: '0.0%',
+    right: '0.0%',
+    top: 60,
+    bottom: 40,
+    symbol: 'emptyCircle',
+    symbolSize: 30,
+    orient: 'vertical',
+    expandAndCollapse: false,
+    animationDurationUpdate: 750,
+    label: {fontWeight: 900}
+  }];
+  let option12 = {
+    title: {text: '输入`6 1`', left: 'center',},
+    series: series12
+  }
+  myChart12.hideLoading();
+  myChart12.setOption(option12);
+  option12 && myChart12.setOption(option12);
+</script>
+
+</body>
+</html>
