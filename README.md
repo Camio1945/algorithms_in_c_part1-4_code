@@ -153,4 +153,5 @@ main() {
 1. 程序1.1：[博客](https://blog.csdn.net/blueskybluesoul/article/details/122115288)、[视频](https://www.bilibili.com/video/BV1hD4y1c7xQ/)
 2. 程序1.2：[博客](https://blog.csdn.net/blueskybluesoul/article/details/122164615)、[视频](https://www.bilibili.com/video/BV1Vu411D7SH)
 2. 程序1.3：[博客](https://blog.csdn.net/blueskybluesoul/article/details/122180163)、[视频](https://www.bilibili.com/video/bv1zi4y1R71K)
+2. 程序1.4：[博客](https://blog.csdn.net/blueskybluesoul/article/details/122266063)、[视频](https://www.bilibili.com/video/bv1V44y1j7kW)
 2. 
