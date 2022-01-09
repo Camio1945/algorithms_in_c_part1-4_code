@@ -20,3 +20,13 @@ add_executable(program_01_04.edited Chapter01/program_01_04/program_01_04.edited
 add_executable(program_01_04.original Chapter01/program_01_04/program_01_04.original.c)
 add_executable(program_01_04.test Chapter01/program_01_04/program_01_04.test.c)
 
+
+add_executable(program_02_01.edited Chapter02/program_02_01/program_02_01.edited.c)
+
+add_executable(program_02_02.edited Chapter02/program_02_02/program_02_02.edited.c)
+
+add_executable(program_02_02.test Chapter02/program_02_02/program_02_02.test.c)
+
+add_executable(AllTests AllTests.c)
+
+add_executable(StrUtil StrUtil.c)
