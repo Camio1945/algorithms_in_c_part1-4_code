@@ -32,6 +32,10 @@
 
 &emsp;&emsp;&emsp;&emsp;文件夹略
 
+&emsp;&emsp;`ThirdParty`：第三方的依赖，比如CuTest
+
+
+
 `temp.c`文件是一个临时文件，因为不想改动原书的代码，但时常又需要自己改改做测试，就会复制到`temp.c`中，可忽略。
 `temp.html`文件也是一个临时文件，可忽略。
 

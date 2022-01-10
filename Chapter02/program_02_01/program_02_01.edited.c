@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include "../../ThirdParty/CuTest.c"
 
 /**
  * 顺序查找
@@ -15,8 +15,27 @@ int search(int a[], int v, int l, int r) {
   return -1;
 }
 
-main() {
-  int a[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+/** 测试正确性 */
+void test_correctness(CuTest *cuTest) {
+  int a[] = {1, 3, 5, 7, 9, 11, 13, 15, 17, 19};
   int res = search(a, 5, 0, 9);
-  printf("%d\n", res);
+  printf("查找5，得到的下标为：%d\n", res);
+  CuAssertIntEquals(cuTest, 2, res);
+
+  res = search(a, 1, 0, 9);
+  printf("查找1，得到的下标为：%d\n", res);
+  CuAssertIntEquals(cuTest, 0, res);
+
+  res = search(a, 20, 0, 9);
+  printf("查找20，得到的下标为：%d\n", res);
+  CuAssertIntEquals(cuTest, -1, res);
+}
+
+main() {
+  CuString *output = CuStringNew(); // 定义用于存储测试信息的字符串
+  CuSuite *suite = CuSuiteNew();    // 新建测试套件
+  SUITE_ADD_TEST(suite, test_correctness);  // 把 test_correctness 方法加入到测试套件中
+  CuSuiteRun(suite);                // 运行测试套件
+  CuSuiteDetails(suite, output);    // 把运行后的结果存入 output 中
+  printf("%s\n", output->buffer);   // 打印测试结果
 }

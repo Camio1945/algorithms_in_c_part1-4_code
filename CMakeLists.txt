@@ -27,6 +27,4 @@ add_executable(program_02_02.edited Chapter02/program_02_02/program_02_02.edited
 
 add_executable(program_02_02.test Chapter02/program_02_02/program_02_02.test.c)
 
-add_executable(AllTests AllTests.c)
-
-add_executable(StrUtil StrUtil.c)
+add_executable(program_02_01.test Chapter02/program_02_01/program_02_01.test.c)
