@@ -1,31 +1,35 @@
-#include "ThirdParty/CuTest.c" // ÒıÈëCuTest¹¤¾ß
+#include <stdio.h>
+#include <time.h>
+#include <stdlib.h>
+
+#define ARR_SIZE 10000000
+#define VALUE_SIZE 200000
 
 /**
- * Ë³Ğò²éÕÒ
- * @param a Êı×é£¨±¾ÀıÊÇÒªÇóÆäÖĞµÄÊı¾İÊÇÒÑ¾­ÉıĞòÅÅĞòµÄ£©
- * @param v Òª´ÓÊı¾İÖĞ²éÕÒµÄÖµ
- * @param l ´ÓÄÄ¸öÏÂ±ê¿ªÊ¼²éÑ¯£¬Ò»°ãÎª0
- * @param r µ½ÄÄ¸öÏÂ±êÎªÖ¹½áÊø²éÑ¯£¬Ò»°ãÎªÊı×éµÄ´óĞ¡ - 1
- * @return Èç¹ûÕÒµ½ÁË£¬Ôò·µ»ØÏÂ±ê£¬Èç¹ûÃ»ÕÒµ½£¬Ôò·µ»Ø-1
+ * äºŒåˆ†æŸ¥æ‰¾
+ * @param a æ•°ç»„ï¼ˆæœ¬ä¾‹æ˜¯è¦æ±‚å…¶ä¸­çš„æ•°æ®æ˜¯å·²ç»å‡åºæ’åºçš„ï¼‰
+ * @param v è¦ä»æ•°æ®ä¸­æŸ¥æ‰¾çš„å€¼
+ * @param l ä»å“ªä¸ªä¸‹æ ‡å¼€å§‹æŸ¥è¯¢ï¼Œä¸€èˆ¬ä¸º0
+ * @param r åˆ°å“ªä¸ªä¸‹æ ‡ä¸ºæ­¢ç»“æŸæŸ¥è¯¢ï¼Œä¸€èˆ¬ä¸ºæ•°ç»„çš„å¤§å° - 1
+ * @return å¦‚æœæ‰¾åˆ°äº†ï¼Œåˆ™è¿”å›ä¸‹æ ‡ï¼Œå¦‚æœæ²¡æ‰¾åˆ°ï¼Œåˆ™è¿”å›-1
  */
 int search(int a[], int v, int l, int r) {
-  int i;
-  for (i = l; i <= r; i++)
-    if (v == a[i]) return i;
+  while (r >= l) {
+    int m = (l + r) / 2;
+    if (v == a[m]) {
+      return m;
+    }
+    if (v < a[m]) {
+      r = m - 1;
+    } else {
+      l = m + 1;
+    }
+  }
   return -1;
 }
 
-void test_correctness(CuTest *cuTest) {
-  int a[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-  int res = search(a, 5, 0, 9);
-  CuAssertIntEquals(cuTest, 5, res);
-}
-
 int main(void) {
-  CuString *output = CuStringNew(); // ¶¨ÒåÓÃÓÚ´æ´¢²âÊÔĞÅÏ¢µÄ×Ö·û´®
-  CuSuite *suite = CuSuiteNew();    // ĞÂ½¨²âÊÔÌ×¼ş
-  SUITE_ADD_TEST(suite, test_correctness);  // °Ñ test_add ·½·¨¼ÓÈëµ½²âÊÔÌ×¼şÖĞ
-  CuSuiteRun(suite);                // ÔËĞĞ²âÊÔÌ×¼ş
-  CuSuiteDetails(suite, output);    // °ÑÔËĞĞºóµÄ½á¹û´æÈë output ÖĞ
-  printf("%s\n", output->buffer);   // ´òÓ¡²âÊÔ½á¹û
+  int a[] = {1, 3, 5, 7, 9, 11, 13, 15, 17, 19};
+  int res = search(a, 19, 0, 9);
+  printf("æŸ¥æ‰¾19ï¼Œå¾—åˆ°çš„ä¸‹æ ‡ä¸ºï¼š%d\n", res);
 }

@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 #define SMALL_SIZE_OF_PQ_ARR 12
-#define LARGE_SIZE 10000000
+#define ARR_SIZE 10000000
 
 /**
  * 连通性第3版
@@ -184,23 +184,23 @@ void test_correctness() {
 
 /** 测试性能 */
 void test_performance() {
-  int size_of_id = LARGE_SIZE; // 节点数组的大小
+  int size_of_id = ARR_SIZE; // 节点数组的大小
   int *id = init_id(size_of_id);  // 节点数组
-  int *pq_arr = init_pq_arr(LARGE_SIZE); // p和q的数组，用于模拟输入数据
+  int *pq_arr = init_pq_arr(ARR_SIZE); // p和q的数组，用于模拟输入数据
 
   printf("\n\n\n------------- 性能测试 - program_01_03 开始 -------------\n");
-  int *depth_arr = init_depth_arr(LARGE_SIZE);
+  int *depth_arr = init_depth_arr(ARR_SIZE);
   clock_t start = clock();
-  program_01_03(id, size_of_id, pq_arr, LARGE_SIZE, depth_arr, 0);
+  program_01_03(id, size_of_id, pq_arr, ARR_SIZE, depth_arr, 0);
   clock_t end = clock();
   printf("program_01_03程序耗时毫秒：%lf\n", (double) (end - start));
   printf("------------- 性能测试 - program_01_03 结束 -------------\n");
 
   printf("\n\n\n------------- 性能测试 - program_01_04 开始 -------------\n");
   id = init_id(size_of_id);
-  depth_arr = init_depth_arr(LARGE_SIZE);
+  depth_arr = init_depth_arr(ARR_SIZE);
   start = clock();
-  program_01_04(id, size_of_id, pq_arr, LARGE_SIZE, depth_arr, 0);
+  program_01_04(id, size_of_id, pq_arr, ARR_SIZE, depth_arr, 0);
   end = clock();
 
   printf("program_01_04程序耗时毫秒：%lf\n", (double) (end - start));

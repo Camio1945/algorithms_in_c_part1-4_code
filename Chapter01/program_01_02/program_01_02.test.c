@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 #define SMALL_SIZE_OF_PQ_ARR 12
-#define LARGE_SIZE 100000
+#define ARR_SIZE 100000
 
 /**
  * 连通性第1版
@@ -156,13 +156,13 @@ void test_correctness() {
 
 /** 测试性能 */
 void test_performance() {
-  int size_of_id = LARGE_SIZE; // 节点数组的大小
+  int size_of_id = ARR_SIZE; // 节点数组的大小
   int *id = init_id(size_of_id);  // 节点数组
-  int *pq_arr = init_pq_arr(LARGE_SIZE); // p和q的数组，用于模拟输入数据
+  int *pq_arr = init_pq_arr(ARR_SIZE); // p和q的数组，用于模拟输入数据
 
   printf("\n\n\n------------- 性能测试 - program_01_01 开始 -------------\n");
   clock_t start = clock();
-  program_01_01(id, size_of_id, pq_arr, LARGE_SIZE, 0);
+  program_01_01(id, size_of_id, pq_arr, ARR_SIZE, 0);
   clock_t end = clock();
 
   printf("program_01_01程序耗时毫秒：%lf\n", (double) (end - start));
@@ -171,7 +171,7 @@ void test_performance() {
   id = init_id(size_of_id);
   printf("------------- 性能测试 - program_01_02 开始 -------------\n");
   start = clock();
-  program_01_02(id, size_of_id, pq_arr, LARGE_SIZE, 0);
+  program_01_02(id, size_of_id, pq_arr, ARR_SIZE, 0);
   end = clock();
   printf("program_01_02程序耗时毫秒：%lf\n", (double) (end - start));
   printf("------------- 性能测试 - program_01_02 结束 -------------\n");

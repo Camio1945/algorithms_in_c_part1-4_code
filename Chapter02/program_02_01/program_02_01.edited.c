@@ -10,23 +10,24 @@
  */
 int search(int a[], int v, int l, int r) {
   int i;
-  for (i = l; i <= r; i++)
-    if (v == a[i]) return i;
+  for (i = l; i <= r; i++) {
+    if (v == a[i]) {
+      return i;
+    }
+  }
   return -1;
 }
 
 /** 测试正确性 */
 void test_correctness(CuTest *cuTest) {
   int a[] = {1, 3, 5, 7, 9, 11, 13, 15, 17, 19};
-  int res = search(a, 5, 0, 9);
-  printf("查找5，得到的下标为：%d\n", res);
-  CuAssertIntEquals(cuTest, 2, res);
-
-  res = search(a, 1, 0, 9);
-  printf("查找1，得到的下标为：%d\n", res);
-  CuAssertIntEquals(cuTest, 0, res);
-
-  res = search(a, 20, 0, 9);
+  for (int i = 0; i < 10; ++i) {
+    int v = a[i];
+    int res = search(a, v, 0, 9);
+    printf("查找%d，得到的下标为：%d\n", v, res);
+    CuAssertIntEquals(cuTest, i, res);
+  }
+  int res = search(a, 20, 0, 9);
   printf("查找20，得到的下标为：%d\n", res);
   CuAssertIntEquals(cuTest, -1, res);
 }
