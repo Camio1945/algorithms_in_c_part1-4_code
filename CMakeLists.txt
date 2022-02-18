@@ -36,3 +36,15 @@ add_executable(program_03_02.original Chapter03/program_03_02/program_03_02.orig
 add_executable(program_03_02.edited Chapter03/program_03_02/program_03_02.edited.c)
 
 add_executable(program_03_04.edited Chapter03/program_03_03-03_04/program_03_04.edited.c)
+
+add_executable(program_03_05 Chapter03/program_03_05/program_03_05.edited.c)
+
+add_executable(program_03_05.edited Chapter03/program_03_05/program_03_05.edited.c)
+
+add_executable(program_03_06.edited Chapter03/program_03_06/program_03_06.edited.c)
+
+add_executable(program_03_07.edited Chapter03/program_03_07/program_03_07.edited.c)
+
+add_executable(program_03_08.edited Chapter03/program_03_08/program_03_08.edited.c)
+
+add_executable(program_03_09.edited Chapter03/program_03_09/program_03_09.edited.c)
