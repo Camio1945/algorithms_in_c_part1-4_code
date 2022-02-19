@@ -42,6 +42,8 @@ main(int argc, char *argv[]) {
   printf("\n逆序之后的链表：\n");
   while (r != NULL) {
     printf("%d ", r->item);
+    link toBeFree = r;
     r = r->next;
+    free(toBeFree);
   }
 }
