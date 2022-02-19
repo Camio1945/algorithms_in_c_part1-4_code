@@ -9,7 +9,7 @@ Number randNum() { return rand(); }
 
 main(int argc, char *argv[]) {
   int i, N = atoi(argv[1]);
-  srand((unsigned) time(NULL)); // 应在main()初始化随机数种子
+//  srand((unsigned) time(NULL)); // 应在main()初始化随机数种子
   printf("N : %d\n", N);
   float M = 0.0, m2 = 0.0;
   Number x;
