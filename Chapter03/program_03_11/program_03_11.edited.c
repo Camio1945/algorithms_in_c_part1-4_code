@@ -7,22 +7,6 @@ struct node {
   link next;
 };
 
-/** 初始化链表 */
-link init_link(int N) {
-  link link_a = malloc(sizeof(link));
-  link current_node = link_a;
-  for (int i = 1; i <= N; ++i) {
-    current_node->item = rand() % 1000;
-    if (i == N) {
-      current_node->next = NULL;
-    } else {
-      current_node->next = malloc(sizeof(link));
-    }
-    current_node = current_node->next;
-  }
-  return link_a;
-}
-
 /** 打印链表 */
 void printf_link(char *msg, link l) {
   printf("%s\n", msg);

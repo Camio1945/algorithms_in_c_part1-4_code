@@ -1,74 +1,45 @@
+#include "Chapter03/program_03_12-03_13-03_14/list.h"
 #include <stdlib.h>
-#include <stdio.h>
 
-typedef struct node *link;
-struct node {
-  int item;
-  link next;
-};
+link freelist;
 
-/** 初始化链表 */
-link init_link(int N) {
-  link link_a = malloc(sizeof(link));
-  link current_node = link_a;
-  for (int i = 1; i <= N; ++i) {
-    current_node->item = rand() % 1000;
-    if (i == N) {
-      current_node->next = NULL;
-    } else {
-      current_node->next = malloc(sizeof(link));
-    }
-    current_node = current_node->next;
+void initNodes(int N) {
+  freelist = malloc((N + 1) * sizeof(link));
+  for (int i = 0; i < N + 1; i++) {
+    freelist[i].next = &freelist[i + 1];
   }
-  return link_a;
+  freelist[N].next = NULL;
 }
 
-/** 打印链表 */
-void printf_link(char *msg, link l) {
-  printf("%s\n", msg);
-  link temp = l->next;
-  while (temp != NULL) {
-    printf("%d ", temp->item);
-    temp = temp->next;
-  }
-  printf("\n");
+link newNode(int i) {
+  link x = deleteNext(freelist);
+  x->item = i;
+  x->next = x;
+  return x;
+}
+
+void freeNode(link x) {
+  insertNext(freelist, x);
+}
+
+void insertNext(link x, link t) {
+  t->next = x->next;
+  x->next = t;
+}
+
+link deleteNext(link x) {
+  link t = x->next;
+  x->next = t->next;
+  return t;
+}
+
+link Next(link x) {
+  return x->next;
+}
+
+int Item(link x) {
+  return x->item;
 }
 
 
-main(int argc, char *argv[]) {
-  int N = 5;
-  link unsorted_link = malloc(sizeof(link)); // 未排序的链表
-  unsorted_link->item = -1;
-  unsorted_link->next = NULL;
-  link handling_unsorted_node = unsorted_link;
-  for (int i = 0; i < N; ++i) {
-    handling_unsorted_node->next = malloc(sizeof(link));
-    handling_unsorted_node->next->item = rand() % 1000;
-    handling_unsorted_node = handling_unsorted_node->next;
-    handling_unsorted_node->next = NULL;
-  }
-  printf_link("未排序的链表：", unsorted_link);
 
-  handling_unsorted_node = unsorted_link->next;
-  link sorted_link = malloc(sizeof(link));
-  sorted_link->item = -1;
-  sorted_link->next = NULL;
-  link handling_sorted_node;
-
-  while (handling_unsorted_node != NULL) {
-    link rest_link = handling_unsorted_node->next;
-    handling_sorted_node = sorted_link;
-    while (handling_sorted_node->next != NULL) {
-      if (handling_sorted_node->next->item > handling_unsorted_node->item) {
-        break;
-      }
-      handling_sorted_node = handling_sorted_node->next;
-    }
-    handling_unsorted_node->next = handling_sorted_node->next;
-    handling_sorted_node->next = handling_unsorted_node;
-    handling_unsorted_node = rest_link;
-  }
-  printf_link("排序后的链表：", sorted_link);
-
-
-}
