@@ -13,7 +13,7 @@ main(int argc, char *argv[]) {
     insertNext(x, t);
     x = t;
   }
-  // white循环的作用：轮流报数出局、选出领导人
+  // while循环的作用：轮流报数出局、选出领导人
   while (x != Next(x)) {
     // for循环的作用，报数，直到M之前
     for (i = 1; i < M; i++) {

@@ -14,15 +14,19 @@ main(int argc, char *argv[]) {
   link t = malloc(sizeof *t), x = t;
   t->item = 1;
   t->next = t;
+  // for循环的作用：初始化x链表
   for (i = 2; i <= N; i++) {
     x = (x->next = malloc(sizeof *x));
     x->item = i;
     x->next = t;
   }
+  // while循环的作用：轮流报数出局、选出领导人
   while (x != x->next) {
+    // for循环的作用，报数，直到M之前
     for (i = 1; i < M; i++) {
       x = x->next;
     }
+    // 删除下一个节点
     link to_be_deleted = x->next;
     x->next = x->next->next;
     free(to_be_deleted);
