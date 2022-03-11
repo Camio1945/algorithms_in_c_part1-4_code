@@ -64,3 +64,7 @@ add_executable(program_03_17.edited Chapter03/program_03_17/program_03_17.edited
 add_executable(program_03_18.edited Chapter03/program_03_18/program_03_18.edited.c)
 
 add_executable(program_03_19.edited Chapter03/program_03_19/program_03_19.edited.c)
+
+add_executable(program_03_20.edited Chapter03/program_03_20/program_03_20.edited.c)
+
+add_executable(program_03_30.test Chapter03/program_03_20/program_03_30.test.c)
