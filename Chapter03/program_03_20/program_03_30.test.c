@@ -11,10 +11,10 @@ struct node {
 };
 link **grid;
 int G;
-float d = 0.5;
+float d = 0.1;
 int total = 0;
 int cnt = 0;
-const int N = 32;
+const int N = 3200;
 point *point_arr;
 
 float randFloat() { return 1.0 * rand() / RAND_MAX; }
@@ -63,7 +63,7 @@ gridinsert(float x, float y) {
   grid[X][Y] = t;
 }
 
-
+/** 程序3.8版本 */
 point program_03_08() {
   int i, j, cnt = 0;
   point *a = malloc(N * (sizeof(*a)));
@@ -86,6 +86,7 @@ point program_03_08() {
   return res;
 }
 
+/** 程序3.20版本 */
 point program_03_20() {
   int i, j;
   G = 1 / d;
@@ -106,8 +107,6 @@ point program_03_20() {
  * 测试正确性
  */
 void test_correctness() {
-
-
   printf("------------- 正确性测试 开始 -------------\n");
   point result_03_08 = program_03_08();
   point result_03_20 = program_03_20();
@@ -117,8 +116,6 @@ void test_correctness() {
     printf("正确性测试未通过！！！！！！！！！！！！！！！！！！！！！\n");
   }
   printf("------------- 正确性测试 结束-------------\n");
-
-
 }
 
 /** 测试性能 */

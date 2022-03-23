@@ -1,62 +1,91 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
-typedef struct node *link;
-struct node {
-  int v;
+typedef int Item;
+/*
+
+typedef struct STACKnode *link;
+
+struct STACKnode {
+  Item item;
   link next;
 };
+link head;
 
-/**
- * 新建节点
- * @param v 值
- * @param next 下一个节点
- * @return
- */
-link NEW(int v, link next) {
-  link x = malloc(sizeof *x);
-  x->v = v;
-  x->next = next;
-  return x;
+void STACKinit(int maxN) {
+  head = NULL;
+}
+
+int STACKEmpty() {
+  return head == NULL;
+}
+
+void STACKpush(Item item) {
+  link x = malloc(sizeof(link));
+  x->item = item;
+  x->next = head;
+  head = x;
+}
+
+Item STACKpop() {
+  link x = head;
+  head = head->next;
+  return x->item;
+}
+*/
+
+Item *s;
+int N;
+void STACKinit(int maxN) {
+  s = malloc(maxN * sizeof(Item));
+  N = 0;
+}
+int STACKEmpty() {
+  return N == 0;
+}
+void STACKpush(Item item) {
+  s[N] = item;
+  N++;
+}
+Item STACKpop() {
+  N--;
+  Item item = s[N];
+  return item;
 }
 
 main() {
-  setbuf(stdout, NULL); // 将标准输出的缓存区清零，防止printf不及时打印
-  int i, j, V = 8;
-  link adj[V];
-  for (i = 0; i < V; i++) {
-    adj[i] = NULL;
-  }
-  int arr2d[12][2] = {
-      {0, 1},
-      {0, 2},
-      {0, 5},
-      {0, 6},
-      {0, 7},
-      {1, 7},
-      {2, 7},
-      {3, 4},
-      {3, 5},
-      {4, 5},
-      {4, 6},
-      {4, 7},
-  };
-  for (int k = 0; k < 12; ++k) {
-    i = arr2d[k][0];
-    j = arr2d[k][1];
-    adj[i] = NEW(j, adj[i]);
-    adj[j] = NEW(i, adj[j]);
-  }
-  for (int k = 0; k < V; ++k) {
-    link obj = adj[k];
-    printf("连接到节点 %d 的节点有：", k);
-    while (obj != NULL) {
-      printf("%d", obj->v);
-      obj = obj->next;
-      if (obj != NULL) {
-        printf(" -> ");
-      }
+  setbuf(stdout, NULL);
+  char *a = "123 13 +";
+  int N = strlen(a);
+  STACKinit(N);
+  for (int i = 0; i < N; ++i) {
+    char c = a[i];
+    if (c == '+') {
+      Item num1 = STACKpop();
+      Item num2 = STACKpop();
+      Item num3 = num1 + num2;
+      STACKpush(num3);
     }
-    printf("\n");
+    if (c == '*') {
+      Item num1 = STACKpop();
+      Item num2 = STACKpop();
+      Item num3 = num1 * num2;
+      STACKpush(num3);
+    }
+    if (c >= '0' && c <= '9') {
+      STACKpush(0);
+    }
+    while (c >= '0' && c <= '9') {
+      Item pop = STACKpop();
+      Item previous = 10 * pop;
+      Item current = c - '0';
+      Item total = previous + current;
+      STACKpush(total);
+      i++;
+      c = a[i];
+    }
   }
+  Item res = STACKpop();
+  printf("结果：%d \n", res);
 }
