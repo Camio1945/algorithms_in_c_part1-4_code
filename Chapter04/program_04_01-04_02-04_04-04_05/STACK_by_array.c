@@ -1,4 +1,4 @@
-/** progtam_04_04 */
+/** program_04_04 */
 #include <stdlib.h>
 #include "STACK.h"
 

@@ -1,4 +1,4 @@
-/** progtam_04_05 */
+/** program_04_05 */
 #include <stdlib.h>
 #include "Item.h"
 
