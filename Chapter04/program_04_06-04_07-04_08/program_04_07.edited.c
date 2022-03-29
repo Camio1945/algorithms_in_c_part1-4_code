@@ -29,7 +29,7 @@ void init_pq_arr_by_precise_data(int *pq_arr) {
 main() {
   int *pq_arr = malloc(sizeof(int) * SIZE * 2); // 定义指针
   init_pq_arr_by_precise_data(pq_arr); // 初始化数组
-  UFinit(SIZE);
+  UFinit(SIZE); // 初始化默认的连通情况与节点深度
   for (int i = 0; i < SIZE; ++i) {
     int p = pq_arr[i * 2];
     int q = pq_arr[i * 2] + 1;
