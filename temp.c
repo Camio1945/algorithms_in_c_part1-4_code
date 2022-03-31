@@ -1,21 +1,39 @@
 #include <stdio.h>
-#include <string.h>
-#include "./Chapter04/program_04_03/STACK.c"
+
+typedef struct node *link;
+
+struct node {
+  int item;
+  link next;
+};
+int staticVar;
+
+void testStatic1() {
+//  static int staticVar;
+  printf("staticVar : %d\n", staticVar);
+  staticVar = 100;
+  int localVar;
+  printf(" localVar : %d\n", localVar);
+  localVar = 100;
+}
+
+
+void testStatic2() {
+//  static int staticVar;
+  printf("staticVar : %d\n", staticVar);
+  staticVar = 100;
+  int localVar = 0;
+  printf(" localVar : %d\n", localVar);
+  localVar = 100;
+}
+
 
 main() {
-  char *a = "((1+2)*3)";
-  int N = strlen(a);
-  STACKinit(N);
-  for (int i = 0; i < N; ++i) {
-    char c = a[i];
-    if (c >= '0' && c <= '9') {
-      printf("%c ", c);
-    }
-    if (c == '+' || c == '*') {
-      STACKpush(c);
-    }
-    if (c == ')') {
-      printf("%c ", STACKpop());
-    }
-  }
+  testStatic1();
+  testStatic1();
+
+  printf("\n");
+
+  testStatic2();
+  testStatic2();
 }
