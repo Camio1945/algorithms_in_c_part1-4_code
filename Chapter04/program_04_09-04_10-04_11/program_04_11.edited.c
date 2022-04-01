@@ -11,7 +11,7 @@ static int N, head, tail;
  * @param maxN 数组的大小
  */
 void QUEUEinit(int maxN) {
-  q = malloc(sizeof(Item));
+  q = malloc(sizeof(Item) * (maxN + 1));
   N = maxN + 1;
   head = N;
   tail = 0;
