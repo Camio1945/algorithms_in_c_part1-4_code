@@ -84,3 +84,5 @@ add_executable(program_04_12.edited Chapter04/program_04_12/program_04_12.edited
 add_executable(program_04_13.edited Chapter04/program_04_13-04_14-04_15/program_04_13.edited.c)
 
 add_executable(program_04_17.edited Chapter04/program_04_16-04_17/program_04_17.edited.c)
+
+add_executable(program_04_19.edited Chapter04/program_04_18-04_19-04_20/program_04_19.edited.c)

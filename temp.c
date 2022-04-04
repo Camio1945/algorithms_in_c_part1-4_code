@@ -1,5 +1,10 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 main() {
-  printf("hello");
+  printf("%d\n", rand());
+  printf("%d\n", rand());
+  printf("%d\n", rand());
+  printf("%d\n", rand());
+  printf("%d\n", rand());
 }
