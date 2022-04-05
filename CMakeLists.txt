@@ -92,3 +92,5 @@ add_executable(program_04_21.edited Chapter04/program_04_21-04_22-04_23/program_
 add_executable(program_05_01.edited Chapter05/program_05_01/program_05_01.edited.c)
 
 add_executable(program_05_02.edited Chapter05/program_05_02/program_05_02.edited.c)
+
+add_executable(program_05_03.edited Chapter05/program_05_03/program_05_03.edited.c)
