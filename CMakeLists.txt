@@ -102,3 +102,5 @@ add_executable(program_05_05.edited Chapter05/program_05_05/program_05_05.edited
 add_executable(program_05_06.edited Chapter05/program_05_06/program_05_06.edited.c)
 
 add_executable(program_05_07.edited Chapter05/program_05_07/program_05_07.edited.c)
+
+add_executable(program_05_08.edited Chapter05/program_05_08/program_05_08.edited.c)
