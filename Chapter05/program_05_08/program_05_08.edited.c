@@ -12,7 +12,7 @@ void mark(int m, int h) {
 }
 
 /**
- * 尺子
+ * 画尺子
  * @param l 左侧位置
  * @param r 右侧位置
  * @param h 高度
