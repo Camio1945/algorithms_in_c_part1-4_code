@@ -60,6 +60,6 @@ main() {
   int knapSize = 17;
   int maxVal = knap(knapSize);
   printf("注：在本例中，各物品的数量都是无限的\n");
-  printf("背包的大小为：%d，能装下的最价值为：%d\n", knapSize, maxVal);
+  printf("背包的大小为：%d，能装下的最大价值为：%d\n", knapSize, maxVal);
   printf("总循环的次数：%d\n", count);
 }
