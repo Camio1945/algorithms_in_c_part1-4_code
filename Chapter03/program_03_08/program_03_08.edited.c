@@ -14,7 +14,7 @@ float distance(point a, point b) {
 main(int argc, char *argv[]) {
   setbuf(stdout, NULL); // 将标准输出的缓存区清零，防止printf不及时打印
   printf("本程序接收两个参数，第1个参数代表生成的点的个数(int类型)，第2个参数代表直线的长度(float类型)，如：32 0.5\n");
-//  srand((unsigned) time(NULL)); // 应在main()初始化随机数种子
+//  srand((unsigned) time(NULL)); // 初始化随机数种子
   float d = atof(argv[2]);
   int i, j, cnt = 0, N = atoi(argv[1]);
   point *a = malloc(N * (sizeof(*a)));

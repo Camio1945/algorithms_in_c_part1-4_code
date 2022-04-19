@@ -139,7 +139,7 @@ void test_performance() {
 
 int main() {
   setbuf(stdout, NULL); // 将标准输出的缓存区清零，防止printf不及时打印
-  srand((unsigned) time(NULL)); // 应在main()初始化随机数种子
+  srand((unsigned) time(NULL)); // 初始化随机数种子
   point_arr = malloc(N * sizeof(point));
   for (int i = 0; i < N; ++i) {
     point_arr[i].x = randFloat();
