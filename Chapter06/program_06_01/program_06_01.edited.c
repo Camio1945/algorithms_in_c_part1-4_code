@@ -55,5 +55,5 @@ main() {
   }
   printf("\n\n");
 
-  printf("数组大小：%d，总比较次数：%d\n", N, count);
+  printf("数组大小：%d，总比较次数：%d（等于%d的阶乘）\n", N, count, (N - 1));
 }
