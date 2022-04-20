@@ -46,7 +46,7 @@ void bubble(Item a[], int l, int r) {
 
 main() {
   setbuf(stdout, NULL);
-//  srand((unsigned) time(NULL)); // 初始化随机数种子
+  srand((unsigned) time(NULL)); // 初始化随机数种子
   printf("冒泡排序\n");
   int *a = malloc(N * sizeof(int));
   for (int i = 0; i < N; ++i) {
