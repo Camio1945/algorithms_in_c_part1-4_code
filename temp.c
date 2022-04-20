@@ -1,45 +1,46 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <time.h>
 
-#define Nmax 1000
-#define Mmax 10000
+typedef int Item;
+#define key(A) (A)
+#define less(A, B) (key(A) < key(B))
+#define exch(A, B) {Item t = A; A = B; B = t;}
+#define compexch(A, B) if(less(B, A)) exch(A, B)
 
-/** 代表一个长长的字符串 */
-char buf[Mmax];
-int M = 0;
+int count = 0;
 
-/**
- * 比较字符串
- * @param i 第1个字符串
- * @param j 第2个字符串
- * @return
- */
-int compare(const void *i, const void *j) {
-  // 注意这里的写法，不是 (char *)i ，而是 *(char **)i
-  return strcmp(*(char **) i, *(char **) j);
+void sort(Item a[], int l, int r) {
+  int i, j;
+  for (j = l + 1; j <= r; j++) {
+    for (i = j; i <= r; i++) {
+      compexch(a[j - 1], a[i])
+      count++;
+    }
+  }
 }
 
 main() {
-  setbuf(stdout, NULL); // 将标准输出的缓存区清零，防止printf不及时打印
-  printf("同时本程序需要在控制台输入一些英文单词，用于排序，如：now is the time for all\n");
-  printf("提示：控制台输入完成后，按回车，然后按快捷键：Ctrl + D （也可能是Ctrl + C 或 Ctrl + Z，不同平台不一样，多试试）\n");
-  int i, N;
-  char *arr[Nmax]; // 指针数组
-  // for循环作用：从控制台获取字符串
-  for (N = 0; N < Nmax; N++) {
-    // arr[N]是一个指针
-    arr[N] = &buf[M];
-    if (scanf("%s", arr[N]) == EOF) {
-      break;
-    }
-    // 注意后面要加1，为了给字符串增加一个结束符
-    M += strlen(arr[N]) + 1;
-  }
-  // 快速排序
-  qsort(arr, N, sizeof(char *), compare);
-  // for循环作用：打印结果
+  setbuf(stdout, NULL);
+  srand((unsigned) time(NULL)); // 初始化随机数种子
+  printf("使用驱动程序的数组排序的例子\n");
+  int i, N = 4;
+  int *a = malloc(N * sizeof(int));
+  printf("原数组：");
   for (i = 0; i < N; i++) {
-    printf("%s\n", arr[i]);
+    a[i] = 1000 * (1.0 * rand() / RAND_MAX);
+    printf("%3d ", a[i]);
   }
+  printf("\n\n");
+
+  sort(a, 0, N - 1);
+  printf("\n\n排序后的数组：");
+  for (i = 0; i < N; i++) {
+    printf("%3d ", a[i]);
+  }
+  printf("\n\n");
+
+  printf("数组大小：%d，总比较次数：%d（等于%d的阶乘）\n", N, count, (N - 1));
 }
+

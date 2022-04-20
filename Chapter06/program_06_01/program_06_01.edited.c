@@ -27,9 +27,9 @@ void sort(Item a[], int l, int r) {
   int i, j;
   for (i = l + 1; i <= r; i++) {
     for (j = i; j > l; j--) {
-      printf("排序前：%d、%d", a[j - 1], a[j]);
+      printf("排序前：a[%d]=%d、a[%d]=%d", j - 1, a[j - 1], j, a[j]);
       compexch(a[j - 1], a[j]);
-      printf("\t排序后：%d、%d\n", a[j - 1], a[j]);
+      printf("\t排序后：a[%d]=%d、a[%d]=%d\n", j - 1, a[j - 1], j, a[j]);
       count++;
     }
   }
