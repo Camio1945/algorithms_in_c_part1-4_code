@@ -1,4 +1,4 @@
-/** 程序6.2：插入排序 */
+/** 程序6.3：插入排序 */
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
