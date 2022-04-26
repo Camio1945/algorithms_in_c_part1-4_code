@@ -45,6 +45,12 @@ main() {
   setbuf(stdout, NULL);
   srand((unsigned) time(NULL)); // 初始化随机数种子
   printf("原位排序\n");
+  int indexArr[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14};
+  printf("　　　　下标：");
+  for (int i = 0; i < N; i++) {
+    printf("%3d ", indexArr[i]);
+  }
+  printf("\n");
   int *data = malloc(N * sizeof(int));
   int *a = malloc(N * sizeof(int));
   data[0] = 'A';
