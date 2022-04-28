@@ -58,11 +58,11 @@ link sort(link h) {
     t->next = out; // out是上一次的最大值（链表）
     out = t; // out是上一次的最大值（链表）
 
-    printf("      h：");
-    show(h);
-    printf("\n");
     printf("    out：");
     show(out);
+    printf("\n");
+    printf("      h：");
+    show(h);
     printf("\n");
   }
   h->next = out;
