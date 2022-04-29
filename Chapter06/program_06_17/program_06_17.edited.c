@@ -43,6 +43,7 @@ void distcount(int a[], int l, int r) {
     cnt[j] += cnt[j - 1];
   }
   printCnt("cnt：", cnt);
+  // 这个for循环执行完后，数组b中的值都是排好序的了
   for (i = l; i <= r; i++) {
     printf("       i = %2d, a[i] = %d, cnt[a[i]] = %2d，即b[%2d]=%2d\n", i, a[i], cnt[a[i]], cnt[a[i]], a[i]);
     b[cnt[a[i]]] = a[i];
@@ -57,7 +58,7 @@ void distcount(int a[], int l, int r) {
 
 main() {
   setbuf(stdout, NULL);
-  srand((unsigned) time(NULL)); // 初始化随机数种子
+//  srand((unsigned) time(NULL)); // 初始化随机数种子
   printf("关键字索引统计\n");
   int i;
   int *a = malloc(sizeof(int) * N);
