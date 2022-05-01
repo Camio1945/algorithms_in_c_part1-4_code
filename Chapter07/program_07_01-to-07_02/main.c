@@ -8,7 +8,7 @@ typedef int Item;
 #define exch(A, B) { Item t = A; A = B; B = t; }
 #define compexch(A, B) if (less(B, A)) exch(A, B)
 
-#define N 2
+#define N 20
 
 /** 打印数组 */
 void printArr(char *prefix, int *a) {
@@ -20,7 +20,7 @@ void printArr(char *prefix, int *a) {
 }
 
 /**
- * 划分
+ * 划分（程序7.2）
  * 设定一个基准值（我们这里取的是a[r]）
  * 从左往右遍历a[l]到a[r-1]，如果值比a[r]大(或相等)，则应该排到a[r]的右边
  * 从右往左遍历a[r-1]到a[l]，如果值比a[r]小，则应该排到a[r]的左边
@@ -56,16 +56,18 @@ int partition(Item a[], int l, int r) {
 }
 
 /**
- * 快速排序
+ * 快速排序（程序7.1）
  * @param a 数组
  * @param l 左下标
  * @param r 右下标
  */
 void quicksort(Item a[], int l, int r) {
+  printf("  l = %d, r = %d\n", l, r);
   if (r <= l) {
     return;
   }
   int i = partition(a, l, r);
+  printf("i = %d\n", i);
   quicksort(a, l, i - 1);
   quicksort(a, i + 1, r);
 }
@@ -73,6 +75,7 @@ void quicksort(Item a[], int l, int r) {
 main() {
   setbuf(stdout, NULL);
 //  srand((unsigned) time(NULL)); // 初始化随机数种子
+  rand();
   printf("快速排序\n");
   int *a = malloc(N * sizeof(int));
   for (int i = 0; i < N; ++i) {
