@@ -152,3 +152,5 @@ add_executable(main Chapter07/program_07_01-to-07_02/main.c)
 add_executable(program_06_14.edited Chapter06/program_06_14/program_06_14.edited.c)
 
 add_executable(program_06_17.edited Chapter06/program_06_17/program_06_17.edited.c)
+
+add_executable(program_07_03.edited Chapter07/program_07_03/program_07_03.edited.c)
