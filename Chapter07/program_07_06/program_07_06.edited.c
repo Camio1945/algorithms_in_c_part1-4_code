@@ -5,16 +5,17 @@
 typedef int Item;
 #define key(A) (A)
 #define less(A, B) (key(A) < key(B))
+#define eq(A, B) (!less(A, B) && !less(B, A))
 #define exch(A, B) { Item t = A; A = B; B = t; }
 #define compexch(A, B) if (less(B, A)) exch(A, B)
 
-#define N 20
+#define N 15
 
 /** 打印数组 */
 void printArr(char *prefix, int *a) {
   printf("%s", prefix);
   for (int i = 0; i < N; i++) {
-    printf("%3d ", a[i]);
+    printf("%3c ", a[i]);
   }
   printf("\n");
 }
@@ -47,73 +48,59 @@ int partition(Item a[], int l, int r) {
     if (i >= j) {
       break;
     }
+    printf("a[%d]=%c, a[%d]=%c\n", i, a[i], j, a[j]);
     exch(a[i], a[j])
     printArr("　　　　", a);
   }
+  printf("a[%d]=%c, a[%d]=%c\n", i, a[i], r, a[r]);
   exch(a[i], a[r])
   printArr("　　　　", a);
   return i;
 }
 
-#define M 10
-
-void quicksort(Item a[], int l, int r) {
-  int i;
-  if (r - l <= M) {
-    return;
-  }
-  exch(a[(l + r) / 2], a[r - 1]);
-  compexch(a[l], a[r - 1]);
-  compexch(a[l], a[r]);
-  compexch(a[r - 1], a[r]);
-  i = partition(a, l + 1, r - 1);
-  quicksort(a, l, i - 1);
-  quicksort(a, i + 1, r);
-}
-
 /**
- * 插入排序
+ * 选择
  * @param a 数组
  * @param l 左下标
  * @param r 右下标
+ * @param k 要找的中间值
  */
-void insertion(Item a[], int l, int r) {
-  int i;
-  // for循环的作用，把数组中最小的那个数排到最前面
-  for (i = r; i > l; i--) {
-    compexch(a[i - 1], a[i])
+void select(Item a[], int l, int r, int k) {
+  if (r <= l) {
+    return;
   }
-  printArr("　　　　", a);
-  for (i = l + 2; i <= r; i++) {
-    int v = a[i];
-    int j = i;
-    printf("i = %d：\n", i);
-    while (less(v, a[j - 1])) {
-      a[j] = a[j - 1];
-      a[j - 1] = -1; // 本行代码为演示代码，表示a[j-1]的位置空出来了，可删除
-      printArr("　　　　", a);
-      j--;
-    }
-    a[j] = v;
-    printArr("　　　　", a);
+  int i = partition(a, l, r);
+  if (i >= k) {
+    select(a, l, i - 1, k);
+  } else {
+    select(a, i + 1, r, k);
   }
-}
-
-void sort(Item a[], int l, int r) {
-  quicksort(a, l, r);
-  insertion(a, l, r);
 }
 
 main() {
   setbuf(stdout, NULL);
 //  srand((unsigned) time(NULL)); // 初始化随机数种子
   rand();
-  printf("改进快速排序\n");
+  printf("选择算法\n");
   int *a = malloc(N * sizeof(int));
-  for (int i = 0; i < N; ++i) {
-    a[i] = 1000 * (1.0 * rand() / RAND_MAX);
-  }
+  a[0] = 'A';
+  a[1] = 'S';
+  a[2] = 'O';
+  a[3] = 'R';
+  a[4] = 'T';
+  a[5] = 'I';
+  a[6] = 'N';
+  a[7] = 'G';
+  a[8] = 'E';
+  a[9] = 'X';
+  a[10] = 'A';
+  a[11] = 'M';
+  a[12] = 'P';
+  a[13] = 'L';
+  a[14] = 'E';
   printArr("排序前：", a);
-  sort(a, 0, N - 1);
+  int middle = 7;
+  select(a, 0, N - 1, middle);
   printArr("排序后：", a);
+  printf("a[%d]=%c\n", middle, a[middle]);
 }

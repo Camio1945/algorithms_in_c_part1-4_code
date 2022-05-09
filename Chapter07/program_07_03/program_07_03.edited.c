@@ -34,7 +34,7 @@ void printArr(char *prefix, int *a) {
  * @return
  */
 int partition(Item a[], int l, int r) {
-  int i = 0; // 从左往右遍历的下标
+  int i = l; // 从左往右遍历的下标
   int j = r; // 从右往左遍历的下标
   int v = a[r];
   while (1) {
