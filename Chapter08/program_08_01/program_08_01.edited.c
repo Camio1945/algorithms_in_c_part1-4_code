@@ -30,14 +30,29 @@ void mergeAB(Item c[], Item a[], int N, Item b[], int M) {
   int i, j, k;
   for (i = 0, j = 0, k = 0; k < N + M; k++) {
     if (i == N) {
+      printf("b[%d] = %d", j, b[j]);
       c[k] = b[j++];
+      printf(", c[%d] = %d\n", k, c[k]);
       continue;
     }
     if (j == M) {
+      printf("a[%d] = %d", i, a[i]);
       c[k] = a[i++];
+      printf(", c[%d] = %d\n", k, c[k]);
       continue;
     }
+    printf("a[%d] = %d, b[%d] = %d", i, a[i], j, b[j]);
     c[k] = (less(a[i], b[j])) ? a[i++] : b[j++];
+    printf(", c[%d] = %d\n", k, c[k]);
+    /*
+    if (a[i] < b[j]) {
+      c[k] = a[i];
+      i++;
+    } else {
+      c[k] = b[j];
+      j++;
+    }
+    */
   }
 }
 
