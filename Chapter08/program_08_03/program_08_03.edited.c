@@ -1,4 +1,4 @@
-/** 程序8.2：抽象原位归并算法 */
+/** 程序8.3：自顶向下归并排序示例 */
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -14,12 +14,12 @@ typedef int Item;
 void printArr(char *prefix, int *a, int size) {
   printf("%s", prefix);
   for (int i = 0; i < size; i++) {
-    printf("%3d ", a[i]);
+    printf("%3c ", a[i]);
   }
   printf("\n");
 }
 
-#define maxN 10
+#define maxN 20
 Item aux[maxN];
 
 /**
@@ -39,7 +39,6 @@ void merge(Item a[], int l, int m, int r) {
   for (j = m; j < r; j++) {
     aux[r + m - j] = a[j + 1];
   }
-  printArr("      aux：", aux, (r + 1));
   for (k = l; k <= r; k++) {
     // 把较小的那个赋给a[k]
     if (less(aux[j], aux[i])) {
@@ -52,23 +51,47 @@ void merge(Item a[], int l, int m, int r) {
   }
 }
 
+/**
+ * 归并排序
+ * @param a 数组a
+ * @param l 左下标
+ * @param r 右下标
+ */
+void mergesort(Item a[], int l, int r) {
+  int m = (r + l) / 2;
+  if (r <= l) {
+    return;
+  }
+  mergesort(a, l, m);
+  mergesort(a, m + 1, r);
+  merge(a, l, m, r);
+  printf("\nl = %d, r = %d\n", l, r);
+  printArr("　　　　　a：", a, 15);
+}
+
 main() {
   setbuf(stdout, NULL);
 //  srand((unsigned) time(NULL)); // 初始化随机数种子
   rand();
-  printf("抽象原位归并算法\n");
-  int N = 6;
+  printf("程序8.3：自顶向下归并排序示例\n");
+  int N = 15;
   int *a = malloc(N * sizeof(int));
-  // 注：本例中要求a可以分成两段，前半段是有序的，后半段也是有序的
-  a[0] = 1;
-  a[1] = 3;
-  a[2] = 7;
-
-  a[3] = 5;
-  a[4] = 6;
-  a[5] = 8;
-
+  a[0] = 'A';
+  a[1] = 'S';
+  a[2] = 'O';
+  a[3] = 'R';
+  a[4] = 'T';
+  a[5] = 'I';
+  a[6] = 'N';
+  a[7] = 'G';
+  a[8] = 'E';
+  a[9] = 'X';
+  a[10] = 'A';
+  a[11] = 'M';
+  a[12] = 'P';
+  a[13] = 'L';
+  a[14] = 'E';
   printArr("排序前数组a：", a, N);
-  merge(a, 0, 2, N - 1);
+  mergesort(a, 0, N - 1);
   printArr("排序后数组a：", a, N);
 }

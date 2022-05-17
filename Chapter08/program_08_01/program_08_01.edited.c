@@ -1,3 +1,4 @@
+/** 程序8.1：归并 */
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
