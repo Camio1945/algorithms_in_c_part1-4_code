@@ -1,84 +1,44 @@
+#include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
+#include <unistd.h>
 
-typedef int Item;
-#define key(A) (A)
-#define less(A, B) (key(A) < key(B))
-#define exch(A, B) { Item t = A; A = B; B = t; }
-#define compexch(A, B) if (less(B, A)) exch(A, B)
+#define NUM_OF_TASKS 5
 
-#define N 2
-
-/** 打印数组 */
-void printArr(char *prefix, int *a) {
-  printf("%s", prefix);
-  for (int i = 0; i < N; i++) {
-    printf("%3d ", a[i]);
-  }
-  printf("\n");
+void *downloadfile(void *filename) {
+  printf("I am downloading the file %s!\n", (char *) filename);
+  sleep(rand() % 10);
+  long downloadtime = rand() % 100;
+  printf("I finish downloading the file within %d minutes!\n", downloadtime);
+  pthread_exit((void *) downloadtime);
 }
 
-/**
- * 划分
- * 设定一个基准值（我们这里取的是a[r]）
- * 从左往右遍历a[l]到a[r-1]，如果值比a[r]大(或相等)，则应该排到a[r]的右边
- * 从右往左遍历a[r-1]到a[l]，如果值比a[r]小，则应该排到a[r]的左边
- * 左遍历的下标与右遍历的下标重合时，结束遍历
- * 把基准值放到指定位置（即与最后一次左遍历的下标对调）
- * @param a 数组
- * @param l 左下标
- * @param r 右下标
- * @return
- */
-int partition(Item a[], int l, int r) {
-  int i = 0; // 从左往右遍历的下标
-  int j = r; // 从右往左遍历的下标
-  int v = a[r];
-  while (1) {
-    // while循环作用：在数组a中查找值大于等于v的下标(从左往右找)
-    while (a[i] < v) {
-      i++;
-    }
-    // while循环作用：在数组a中查找值小于v的下标（从右往左找）
-    while (a[j] >= v && j >= i) {
-      j--;
-    }
-    if (i >= j) {
-      break;
-    }
-    exch(a[i], a[j])
-    printArr("　　　　", a);
-  }
-  exch(a[i], a[r])
-  printArr("　　　　", a);
-  return i;
-}
+int main(int argc, char *argv[]) {
+  char files[NUM_OF_TASKS][20] = {"file1.avi", "file2.rmvb", "file3.mp4", "file4.wmv", "file5.flv"};
+  pthread_t threads[NUM_OF_TASKS];
+  int rc;
+  int t;
+  int downloadtime;
 
-/**
- * 快速排序
- * @param a 数组
- * @param l 左下标
- * @param r 右下标
- */
-void quicksort(Item a[], int l, int r) {
-  if (r <= l) {
-    return;
-  }
-  int i = partition(a, l, r);
-  quicksort(a, l, i - 1);
-  quicksort(a, i + 1, r);
-}
+  pthread_attr_t thread_attr;
+  pthread_attr_init(&thread_attr);
+  pthread_attr_setdetachstate(&thread_attr, PTHREAD_CREATE_JOINABLE);
 
-main() {
-  setbuf(stdout, NULL);
-//  srand((unsigned) time(NULL)); // 初始化随机数种子
-  printf("快速排序\n");
-  int *a = malloc(N * sizeof(int));
-  for (int i = 0; i < N; ++i) {
-    a[i] = 1000 * (1.0 * rand() / RAND_MAX);
+  for (t = 0; t < NUM_OF_TASKS; t++) {
+    printf("creating thread %d, please help me to download %s\n", t, files[t]);
+    rc = pthread_create(&threads[t], &thread_attr, downloadfile, (void *) files[t]);
+    if (rc) {
+      printf("ERROR; return code from pthread_create() is %d\n", rc);
+      exit(-1);
+    }
   }
-  printArr("排序前：", a);
-  quicksort(a, 0, N - 1);
-  printArr("排序后：", a);
+
+  pthread_attr_destroy(&thread_attr);
+
+  for (t = 0; t < NUM_OF_TASKS; t++) {
+    pthread_join(threads[t], (void **) &downloadtime);
+    printf("Thread %d downloads the file %s in %d minutes.\n", t, files[t], downloadtime);
+  }
+
+  pthread_exit(NULL);
 }

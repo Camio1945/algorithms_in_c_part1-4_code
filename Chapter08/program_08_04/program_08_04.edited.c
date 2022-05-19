@@ -22,8 +22,6 @@ void printArr(char *prefix, int *a, int size) {
 #define maxN 20
 Item aux[maxN];
 
-Item aux[maxN];
-
 /**
  * 归并（程序8.1）
  * @param c 合并之后最终的数组
