@@ -18,7 +18,7 @@ main() {
   for (i = 0; i < N; i++) {
     printf("%d ", a[i]);
   }
-  printf("\n创建队列：");
+  printf("\n创建队列");
   for (i = 0; i < N; i++) {
     PQinsert(i);
   }
