@@ -1,3 +1,4 @@
+/** 程序9.9：无序双链表优先队列 */
 #include "PQfull.h"
 #include <stdlib.h>
 

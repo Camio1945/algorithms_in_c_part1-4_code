@@ -159,4 +159,11 @@ https://space.bilibili.com/360993125/channel/collectiondetail?sid=87746&ctype=0h
 ## 七、未解之谜
 
 1. 程序3.20为什么比程序3.8要快？
+2. 中文全
+
+
+
+## 八、其他
+
+1. 中文全角空格备份：`　`
 2. 

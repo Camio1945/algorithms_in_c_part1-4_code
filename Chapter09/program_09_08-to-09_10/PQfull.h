@@ -1,3 +1,4 @@
+/** 程序9.8：一级优先队列ADT */
 typedef int Item;
 typedef struct pq *PQ;
 typedef struct PQnode *PQlink;
