@@ -31,6 +31,12 @@ struct PQnode {
   PQlink l, r;
 };
 
+/**
+ * 两个大小相等的2次幂堆的合并
+ * @param p 2次幂堆，要求与q的大小相等
+ * @param q 2次幂堆，要求与q的大小相等
+ * @return
+ */
 PQlink pair(PQlink p, PQlink q) {
   if (less(p->key, q->key)) {
     p->r = q->l;
