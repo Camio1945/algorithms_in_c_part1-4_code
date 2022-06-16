@@ -68,7 +68,7 @@ void insertion(Item a[], int l, int r) {
 Item aux[maxN];
 
 /**
- * MSD（most significant digit最高有效位）基数排序
+ * MSD（most significant digit最大有效位）基数排序
  * @param a 数组
  * @param l 左下标
  * @param r 右下标
