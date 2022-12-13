@@ -2,6 +2,7 @@
 #include <stdio.h>
 
 //char *a = "* + 7 * * 4 6 + 8 9 5";
+//char *a = "- 3 / 2 * 4 + 2 3"; // 带减法和除法的示例
 char *a = "* 4 + 2 3";
 int i = 0;
 
@@ -14,9 +15,21 @@ int eval() {
     i++;
     return eval() + eval();
   }
+  if (a[i] == '-') {
+    i++;
+    int x = eval();
+    int y = eval();
+    return y - x;
+  }
   if (a[i] == '*') {
     i++;
     return eval() * eval();
+  }
+  if (a[i] == '/') {
+    i++;
+    int x = eval();
+    int y = eval();
+    return y / x;
   }
   int x = 0;
   while (a[i] >= '0' && a[i] <= '9') {
